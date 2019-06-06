@@ -150,6 +150,9 @@
         padding-bottom: 16px;
         font-size: 20px;
       }
+      th:last-child {
+        width: 5%;
+      }
       td{
         font-size: 14px;
         button{
@@ -166,6 +169,9 @@
           border: 1px #c02278 solid;
         }
       }
+      td:last-child {
+        width: 5%;
+      }
       th, td{
         border-bottom: 1px gray solid;
         font-weight: 700;
@@ -177,6 +183,35 @@
           width: 100px;
           height: 100px;
           padding: 8px;
+        }
+      }
+      .more-float{
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 200px;
+        position: absolute;
+        right: calc(5% + 16px);
+        margin-top: 80px;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        button{
+          width: 100%;
+          border: none;
+          background: transparent;
+          padding: 8px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          i{
+            margin-right: 4px;
+          }
+        }
+        button:hover{
+          background-color: #b2ede8;
         }
       }
     }
