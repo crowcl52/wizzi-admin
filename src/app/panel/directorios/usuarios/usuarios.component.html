@@ -1,3 +1,103 @@
-<p>
-  usuarios works!
-</p>
+<div class="user-wrapper">
+  <div class="user-container">
+    <div class="user-head">
+      <h2>Usuarios</h2>
+      <div class="user-buttons">
+        <a><i class="fas fa-plus"></i></a>
+        <a><i class="fas fa-bell"></i></a>
+        <i class="fas fa-search"></i>
+        <input type="text" name="search" />
+      </div>
+    </div>
+    <div class="user-nav">
+      <div class="nav-title">
+        <h3>Administradores</h3>
+      </div>
+      <div class="nav-title">
+        <h3>Wizpecialistas</h3>
+      </div>
+      <div class="nav-title">
+        <h3>Clientes</h3>
+      </div>
+    </div>
+    <div class="user-tables">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Cuenta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <img src=""/>
+              Maria Rodriguez
+            </td>
+            <td>(333) 34567283</td>
+            <td>maria@gmail.com</td>
+            <td>
+              <button>Habilitada</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table *ngIf="false">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Puntaje</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Tipo</th>
+            <th>Cuenta</th>
+            <th>Estatus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <img src=""/>
+              Maria Rodriguez
+            </td>
+            <td>9</td>
+            <td>(333) 34567283</td>
+            <td>maria@gmail.com</td>
+            <td>Interno</td>
+            <td>
+              <button>Habilitada</button>
+            </td>
+            <td>
+              <button>Inactivo</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table *ngIf="false">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Cuenta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <img src=""/>
+              Maria Rodriguez
+            </td>
+            <td>(333) 34567283</td>
+            <td>maria@gmail.com</td>
+            <td>
+              <button>Habilitada</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
