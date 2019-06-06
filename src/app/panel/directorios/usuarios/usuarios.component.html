@@ -1,99 +1,152 @@
 <div class="user-wrapper">
   <div class="user-container">
+    <div class="email">
+        <label>Email</label>
+    </div>
     <div class="user-head">
       <h2>Usuarios</h2>
       <div class="user-buttons">
         <a><i class="fas fa-plus"></i></a>
         <a><i class="fas fa-bell"></i></a>
-        <i class="fas fa-search"></i>
-        <input type="text" name="search" />
+        <div class="number-pink">3</div>
+        <div class="input">
+          <i class="fas fa-search"></i>
+          <input type="text" name="search" />
+        </div>
       </div>
     </div>
     <div class="user-nav">
-      <div class="nav-title">
+      <div class="nav-title" [ngClass]="{selected: nav === 'admin'}" (click)="nav = 'admin'">
         <h3>Administradores</h3>
       </div>
-      <div class="nav-title">
+      <div class="nav-title" [ngClass]="{selected: nav === 'wiz'}" (click)="nav = 'wiz'">
         <h3>Wizpecialistas</h3>
       </div>
-      <div class="nav-title">
+      <div class="nav-title" [ngClass]="{selected: nav === 'client'}" (click)="nav = 'client'">
         <h3>Clientes</h3>
       </div>
     </div>
     <div class="user-tables">
-      <table>
+      <table *ngIf="nav === 'admin'">
         <thead>
           <tr>
-            <th>Nombre</th>
+            <th></th>
+            <th>
+              Nombre
+              <i class="fas fa-arrow-down"></i>
+            </th>
             <th>Telefono</th>
-            <th>Email</th>
+            <th>
+              Email
+              <i class="fas fa-arrow-down"></i></th>
             <th>Cuenta</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              <img src=""/>
+              <img src="./../../../../assets/descarga.png"/>
+            </td>
+            <td>
               Maria Rodriguez
             </td>
             <td>(333) 34567283</td>
             <td>maria@gmail.com</td>
             <td>
-              <button>Habilitada</button>
+              <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
+              <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
+            </td>
+            <td class="point-more">
+              <button>
+                  <i class="fas fa-ellipsis-h"></i>
+              </button>
             </td>
           </tr>
         </tbody>
       </table>
-      <table *ngIf="false">
+      <table *ngIf="nav === 'wiz'">
         <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Puntaje</th>
-            <th>Telefono</th>
-            <th>Email</th>
-            <th>Tipo</th>
-            <th>Cuenta</th>
-            <th>Estatus</th>
-          </tr>
+            <tr>
+              <th class="five"></th>
+              <th class="twenty">
+                Nombre
+                <i class="fas fa-arrow-down"></i>
+              </th>
+              <th class="ten">Puntaje</th>
+              <th class="fifteen">Telefono</th>
+              <th class="fifteen">
+                Email
+                <i class="fas fa-arrow-down"></i>
+              </th>
+              <th class="ten">Tipo</th>
+              <th class="ten">Cuenta</th>
+              <th class="ten">Estatus</th>
+              <th class="five"></th>
+            </tr>
         </thead>
         <tbody>
           <tr>
-            <td>
-              <img src=""/>
+            <td class="five">
+              <img src="./../../../../assets/descarga.png"/>
+            </td>
+            <td class="twenty">
               Maria Rodriguez
             </td>
-            <td>9</td>
-            <td>(333) 34567283</td>
-            <td>maria@gmail.com</td>
-            <td>Interno</td>
-            <td>
-              <button>Habilitada</button>
+            <td class="ten">9</td>
+            <td class="fifteen">(333) 34567283</td>
+            <td class="fifteen">maria@gmail.com</td>
+            <td class="ten">Interno</td>
+            <td class="ten">
+              <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
+              <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
             </td>
-            <td>
-              <button>Inactivo</button>
+            <td class="ten">
+              <button class="active" (click)="active = !active" *ngIf="active">Inactivo</button>
+              <button class="inactive" (click)="active = !active" *ngIf="!active">Activo</button>
+            </td>
+            <td class="five point-more">
+              <button>
+                  <i class="fas fa-ellipsis-h"></i>
+              </button>
             </td>
           </tr>
         </tbody>
       </table>
-      <table *ngIf="false">
+      <table *ngIf="nav === 'client'">
         <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Telefono</th>
-            <th>Email</th>
-            <th>Cuenta</th>
-          </tr>
+            <tr>
+              <th></th>
+              <th>
+                Nombre
+                <i class="fas fa-arrow-down"></i>
+              </th>
+              <th>Telefono</th>
+              <th>
+                Email
+                <i class="fas fa-arrow-down"></i></th>
+              <th>Cuenta</th>
+              <th></th>
+            </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              <img src=""/>
+              <img src="./../../../../assets/descarga.png"/>
+            </td>
+            <td>
               Maria Rodriguez
             </td>
             <td>(333) 34567283</td>
             <td>maria@gmail.com</td>
             <td>
-              <button>Habilitada</button>
+              <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
+              <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
+            </td>
+            <td class="point-more">
+              <button>
+                  <i class="fas fa-ellipsis-h"></i>
+              </button>
             </td>
           </tr>
         </tbody>
