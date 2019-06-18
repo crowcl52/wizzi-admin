@@ -11,8 +11,8 @@ const routes: Routes = [
     {path:'usuarios', component:UsuariosComponent},
     {path:'servicios', component:ServiciosComponent},
     {path:'carros', component:ServiciosComponent},
-  ]}
-  
+  ]},
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
