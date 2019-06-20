@@ -5,15 +5,14 @@
   </div>
   <div class="log-in">
     <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-hint>Hint</mat-hint>
+      <mat-label>Usuario</mat-label>
+      <input [(ngModel)]="user" matInput>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-hint>Hint</mat-hint>
+      <mat-label>Contraseña</mat-label>
+      <input type="password" [(ngModel)]="password" matInput>
+      <mat-hint> <a href=""> Olvidate tu contraseña? </a> </mat-hint>
     </mat-form-field>
-    <button mat-button class="bg-pink" >Iniciar sesion</button>
+    <button (click)="login()" type="button" class="btn bg-pink btn-lg text-white">Iniciar sesión</button>
   </div>
 </section>

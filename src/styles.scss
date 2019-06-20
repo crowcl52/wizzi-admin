@@ -2,8 +2,8 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-$pink : '#C02278';
+$pink : #C02278;
 
 .bg-pink{
-    background-color: $pink
+    background: $pink!important;
 }

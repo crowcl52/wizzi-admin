@@ -22,6 +22,8 @@ import { PanelComponent } from './panel/panel.component';
 import { PerfilComponent } from './panel/manejo-usuario/perfil/perfil.component';
 import { EstadisticaComponent } from './panel/manejo-usuario/estadistica/estadistica.component';
 import { PagoComponent } from './panel/manejo-usuario/pago/pago.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { PagoComponent } from './panel/manejo-usuario/pago/pago.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
     StoreModule.forRoot( appReducer ),

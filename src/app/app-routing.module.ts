@@ -4,10 +4,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { PanelComponent } from './panel/panel.component';
 import { UsuariosComponent } from './panel/directorios/usuarios/usuarios.component';
 import { ServiciosComponent } from './panel/directorios/servicios/servicios.component';
+import { AuthguardService } from './auth/authguard.service';
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
-  {path:'', component: PanelComponent, children:[
+  {path:'', component: PanelComponent, canActivate: [AuthguardService], children:[
     {path:'usuarios', component:UsuariosComponent},
     {path:'servicios', component:ServiciosComponent},
     {path:'carros', component:ServiciosComponent},
