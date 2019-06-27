@@ -1,198 +1,198 @@
 <div class="user-wrapper">
-  <div class="user-container">
-    <div class="email">
-        <label>Email</label>
-    </div>
-    <div class="user-head">
-      <h2>Usuarios</h2>
-      <div class="user-buttons">
-        <a><i class="fas fa-plus"></i></a>
-        <a><i class="fas fa-bell"></i></a>
-        <div class="number-pink">3</div>
-        <div class="input">
-          <i class="fas fa-search"></i>
-          <input type="text" name="search" />
+    <div class="user-container">
+        <div class="email">
+            <label>Email</label>
         </div>
-      </div>
-    </div>
-    <div class="user-nav">
-      <div class="nav-title" [ngClass]="{selected: nav === 'admin'}" (click)="nav = 'admin'">
-        <h3>Administradores</h3>
-      </div>
-      <div class="nav-title" [ngClass]="{selected: nav === 'wiz'}" (click)="nav = 'wiz'">
-        <h3>Wizpecialistas</h3>
-      </div>
-      <div class="nav-title" [ngClass]="{selected: nav === 'client'}" (click)="nav = 'client'">
-        <h3>Clientes</h3>
-      </div>
-    </div>
-    <div class="user-tables">
-      <table *ngIf="nav === 'admin'">
-        <thead>
-          <tr>
-            <th></th>
-            <th>
-              Nombre
-              <i class="fas fa-arrow-down"></i>
-            </th>
-            <th>Telefono</th>
-            <th>
-              Email
-              <i class="fas fa-arrow-down"></i></th>
-            <th>Cuenta</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <img src="./../../../../assets/descarga.png"/>
-            </td>
-            <td>
-              Maria Rodriguez
-            </td>
-            <td>(333) 34567283</td>
-            <td>maria@gmail.com</td>
-            <td>
-              <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
-              <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
-            </td>
-            <td class="point-more">
-              <button>
-                  <i class="fas fa-ellipsis-h"></i>
-              </button>
-            </td>
-            <div class="more-float">
-              <button>
-                  <i class="fas fa-key"></i>
-                  Deshabilitar
-              </button>
-              <button>
-                  <i class="fas fa-edit"></i>
-                  Edit
-              </button>
-              <button>
-                  <i class="fas fa-trash-alt"></i>
-                  Delete
-              </button>
+        <div class="user-head">
+            <h2>Usuarios</h2>
+            <div class="user-buttons">
+                <a><i class="fas fa-plus"></i></a>
+                <a><i class="fas fa-bell"></i></a>
+                <div class="number-pink">3</div>
+                <div class="input">
+                    <i class="fas fa-search"></i>
+                    <input type="text" name="search" />
+                </div>
             </div>
-          </tr>
-        </tbody>
-      </table>
-      <table *ngIf="nav === 'wiz'">
-        <thead>
-            <tr>
-              <th class="five"></th>
-              <th class="twenty">
-                Nombre
-                <i class="fas fa-arrow-down"></i>
-              </th>
-              <th class="ten">Puntaje</th>
-              <th class="fifteen">Telefono</th>
-              <th class="fifteen">
-                Email
-                <i class="fas fa-arrow-down"></i>
-              </th>
-              <th class="ten">Tipo</th>
-              <th class="ten">Cuenta</th>
-              <th class="ten">Estatus</th>
-              <th class="five"></th>
-            </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="five">
-              <img src="./../../../../assets/descarga.png"/>
-            </td>
-            <td class="twenty">
-              Maria Rodriguez
-            </td>
-            <td class="ten">9</td>
-            <td class="fifteen">(333) 34567283</td>
-            <td class="fifteen">maria@gmail.com</td>
-            <td class="ten">Interno</td>
-            <td class="ten">
-              <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
-              <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
-            </td>
-            <td class="ten">
-              <button class="active" (click)="active = !active" *ngIf="active">Inactivo</button>
-              <button class="inactive" (click)="active = !active" *ngIf="!active">Activo</button>
-            </td>
-            <td class="five point-more">
-              <button>
-                  <i class="fas fa-ellipsis-h"></i>
-              </button>
-            </td>
-            <div class="more-float">
-              <button>
-                  <i class="fas fa-key"></i>
-                  Deshabilitar
-              </button>
-              <button>
-                  <i class="fas fa-edit"></i>
-                  Edit
-              </button>
-              <button>
-                  <i class="fas fa-trash-alt"></i>
-                  Delete
-              </button>
+        </div>
+        <div class="user-nav">
+            <div class="nav-title" [ngClass]="{selected: nav === 'admin'}" (click)="nav = 'admin'">
+                <h3>Administradores</h3>
             </div>
-          </tr>
-        </tbody>
-      </table>
-      <table *ngIf="nav === 'client'">
-        <thead>
-            <tr>
-              <th></th>
-              <th>
-                Nombre
-                <i class="fas fa-arrow-down"></i>
-              </th>
-              <th>Telefono</th>
-              <th>
-                Email
-                <i class="fas fa-arrow-down"></i></th>
-              <th>Cuenta</th>
-              <th></th>
-            </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <img src="./../../../../assets/descarga.png"/>
-            </td>
-            <td>
-              Maria Rodriguez
-            </td>
-            <td>(333) 34567283</td>
-            <td>maria@gmail.com</td>
-            <td>
-              <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
-              <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
-            </td>
-            <td class="point-more">
-              <button>
-                  <i class="fas fa-ellipsis-h"></i>
-              </button>
-            </td>
-            <div class="more-float">
-              <button>
-                  <i class="fas fa-key"></i>
-                  Deshabilitar
-              </button>
-              <button>
-                  <i class="fas fa-edit"></i>
-                  Edit
-              </button>
-              <button>
-                  <i class="fas fa-trash-alt"></i>
-                  Delete
-              </button>
+            <div class="nav-title" [ngClass]="{selected: nav === 'wiz'}" (click)="nav = 'wiz'">
+                <h3>Wizpecialistas</h3>
             </div>
-          </tr>
-        </tbody>
-      </table>
+            <div class="nav-title" [ngClass]="{selected: nav === 'client'}" (click)="nav = 'client'">
+                <h3>Clientes</h3>
+            </div>
+        </div>
+        <div class="user-tables">
+            <table *ngIf="nav === 'admin'">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            Nombre
+                            <i class="fas fa-arrow-down"></i>
+                        </th>
+                        <th>Telefono</th>
+                        <th>
+                            Email
+                            <i class="fas fa-arrow-down"></i></th>
+                        <th>Cuenta</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of client">
+                        <td>
+                            <img src="./../../../../assets/descarga.png" />
+                        </td>
+                        <td>
+                            {{ user.fullname }}
+                        </td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
+                            <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
+                        </td>
+                        <td class="point-more">
+                            <button>
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                        </td>
+                        <div class="more-float" *ngIf="false">
+                            <button>
+                                <i class="fas fa-key"></i>
+                                Deshabilitar
+                            </button>
+                            <button>
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </button>
+                            <button>
+                                <i class="fas fa-trash-alt"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+            <table *ngIf="nav === 'wiz'">
+                <thead>
+                    <tr>
+                        <th class="five"></th>
+                        <th class="twenty">
+                            Nombre
+                            <i class="fas fa-arrow-down"></i>
+                        </th>
+                        <th class="ten">Puntaje</th>
+                        <th class="fifteen">Telefono</th>
+                        <th class="fifteen">
+                            Email
+                            <i class="fas fa-arrow-down"></i>
+                        </th>
+                        <th class="ten">Tipo</th>
+                        <th class="ten">Cuenta</th>
+                        <th class="ten">Estatus</th>
+                        <th class="five"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of client">
+                        <td class="five">
+                            <img src="./../../../../assets/descarga.png" />
+                        </td>
+                        <td class="twenty">
+                            {{ user.fullname}}
+                        </td>
+                        <td class="ten">{{ user.id }}</td>
+                        <td class="fifteen">{{ user.phone }}</td>
+                        <td class="fifteen">{{ user.email }}m</td>
+                        <td class="ten">Interno</td>
+                        <td class="ten">
+                            <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
+                            <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
+                        </td>
+                        <td class="ten">
+                            <button class="active" (click)="active = !active" *ngIf="active">Inactivo</button>
+                            <button class="inactive" (click)="active = !active" *ngIf="!active">Activo</button>
+                        </td>
+                        <td class="five point-more">
+                            <button>
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </td>
+                        <div class="more-float" *ngIf="false">
+                            <button>
+                                <i class="fas fa-key"></i>
+                                Deshabilitar
+                            </button>
+                            <button>
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </button>
+                            <button>
+                                <i class="fas fa-trash-alt"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+            <table *ngIf="nav === 'client'">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            Nombre
+                            <i class="fas fa-arrow-down"></i>
+                        </th>
+                        <th>Telefono</th>
+                        <th>
+                            Email
+                            <i class="fas fa-arrow-down"></i></th>
+                        <th>Cuenta</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of client">
+                        <td>
+                            <img src="./../../../../assets/descarga.png" />
+                        </td>
+                        <td>
+                            {{ user.fullname }}
+                        </td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
+                            <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
+                        </td>
+                        <td class="point-more">
+                            <button>
+                              <i class="fas fa-ellipsis-h"></i>
+                          </button>
+                        </td>
+                        <div class="more-float" *ngIf="false">
+                            <button>
+                              <i class="fas fa-key"></i>
+                              Deshabilitar
+                          </button>
+                            <button>
+                              <i class="fas fa-edit"></i>
+                              Edit
+                          </button>
+                            <button>
+                              <i class="fas fa-trash-alt"></i>
+                              Delete
+                          </button>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 </div>

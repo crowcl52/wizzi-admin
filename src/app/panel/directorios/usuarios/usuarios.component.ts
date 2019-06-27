@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class UsuariosComponent implements OnInit {
 nav: any;
 active: boolean;
-  constructor() {
+client: any;
+  constructor(private userService: UserService) {
     this.nav = 'admin';
     this.active = true;
+    this.userService.GetUsers().subscribe( data => {
+      console.log(data);
+      this.client = data.data.items;
+    })
   }
 
   ngOnInit() {
