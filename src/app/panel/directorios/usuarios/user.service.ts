@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http:HttpClient) { }
+  private token = '';
+
+  constructor(private http:HttpClient, private store: Store<AppState>) { 
+    this.store.select('user').subscribe( user => {
+      console.log(user.data.token);
+      this.token = user.data.token;
+    });
+   }
   public GetUsers(){
     const Header = new HttpHeaders({
-      // tslint:disable-next-line:max-line-length
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImNyZWF0ZWRfYXQiOjE1NTk5MTc2NjgyNjAsInVwZGF0ZWRfYXQiOjE1NTk5MTc2NjgyNjAsImZ1bGxuYW1lIjoiamhvbiBzbm93IiwicGhvbmUiOiIxMjM0NTY3ODkzMSIsImVtYWlsIjoibG9saXZhQG1haWwuY29tIiwicm9sZSI6ImNsaWVudCIsImltYWdlX3NvdXJjZSI6bnVsbCwiY2xpZW50Ijp7ImlkIjoxLCJjcmVhdGVkX2F0IjoxNTU5OTE3NjY3ODQ1LCJ1cGRhdGVkX2F0IjoxNTYxMzMxOTU2ODY3LCJpbnNlcnZpY2UiOmZhbHNlLCJsYXQiOjIwLjY0NjY2NCwibG9uIjotMTAzLjQwNTkyNywibm90aWZpY2F0aW9uX2tleSI6IjUwYTk3ODk0LWY3NDktNDRkOS1iZWY5LTYxYTJlODY4OGExMCIsInVzZXIiOjExLCJjdXJyZW50X3NlcnZpY2UiOm51bGx9LCJwcm92aWRlciI6bnVsbCwiaWF0IjoxNTYxNjEwMjM3LCJleHAiOjE1NjE2MTQ1NTcsImF1ZCI6InByb2plYy5sb20uZHludS5jb20iLCJpc3MiOiJwcm9qZWMubG9tLmR5bnUuY29tIn0.8TRonLWqr4Exuqo8c10y7_2AJ7wesIPVkJdR3Jc8iKM'
+      'Authorization': 'Bearer ' + this.token
     });
-    const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImNyZWF0ZWRfYXQiOjE1NTk5MTc2NjgyNjAsInVwZGF0ZWRfYXQiOjE1NTk5MTc2NjgyNjAsImZ1bGxuYW1lIjoiamhvbiBzbm93IiwicGhvbmUiOiIxMjM0NTY3ODkzMSIsImVtYWlsIjoibG9saXZhQG1haWwuY29tIiwicm9sZSI6ImNsaWVudCIsImltYWdlX3NvdXJjZSI6bnVsbCwiY2xpZW50Ijp7ImlkIjoxLCJjcmVhdGVkX2F0IjoxNTU5OTE3NjY3ODQ1LCJ1cGRhdGVkX2F0IjoxNTYxMzMxOTU2ODY3LCJpbnNlcnZpY2UiOmZhbHNlLCJsYXQiOjIwLjY0NjY2NCwibG9uIjotMTAzLjQwNTkyNywibm90aWZpY2F0aW9uX2tleSI6IjUwYTk3ODk0LWY3NDktNDRkOS1iZWY5LTYxYTJlODY4OGExMCIsInVzZXIiOjExLCJjdXJyZW50X3NlcnZpY2UiOm51bGx9LCJwcm92aWRlciI6bnVsbCwiaWF0IjoxNTYxNjEwMjM3LCJleHAiOjE1NjE2MTQ1NTcsImF1ZCI6InByb2plYy5sb20uZHludS5jb20iLCJpc3MiOiJwcm9qZWMubG9tLmR5bnUuY29tIn0.8TRonLWqr4Exuqo8c10y7_2AJ7wesIPVkJdR3Jc8iKM'
-    // tslint:disable-next-line:max-line-length
+    
     return this.http.get(`https://api.wizi.mx/users`, { headers: Header });
   }
 }

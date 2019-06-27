@@ -7,15 +7,18 @@ import { ServiciosComponent } from './panel/directorios/servicios/servicios.comp
 import { AuthguardService } from './auth/authguard.service';
 
 const routes: Routes = [
-  {path:'login', component: LoginComponent},
-  {path:'', component: PanelComponent,
-  //canActivate: [AuthguardService],
-  children:[
-    {path:'usuarios', component:UsuariosComponent},
-    {path:'servicios', component:ServiciosComponent},
-    {path:'carros', component:ServiciosComponent},
-  ]},
-  { path: '**', redirectTo: 'login' }
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'admin', component: PanelComponent,
+    canActivate: [AuthguardService],
+    children: [
+      { path: 'usuarios', component: UsuariosComponent },
+      { path: 'servicios', component: ServiciosComponent },
+      { path: 'carros', component: ServiciosComponent },
+      { path: '**', redirectTo: 'usuarios' }
+    ]
+  },
+  { path: '**', redirectTo: 'admin' }
 ];
 
 @NgModule({

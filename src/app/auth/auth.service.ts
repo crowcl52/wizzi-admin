@@ -15,23 +15,23 @@ export class AuthService {
   public url = 'https://api.wizi.mx/';
   private urlLogin = 'auth/local/signin';
 
-  loginSubscription: Subscription = new Subscription();
-  user: User = null;
+  public loginSubscription: Subscription = new Subscription();
+  public user: any = null;
 
   constructor( private http: HttpClient, private store: Store<AppState>, private route: Router ) { }
 
   login(email, password){
     let url = `${this.url}${this.urlLogin}`;
-
     const credential = { email_or_phone:email, password };
     this.loginSubscription = this.http.post(url, credential).subscribe((data: any) => {
       this.user = data.data.items[0];
       this.store.dispatch(new ActivateUserAction({ ...data.data.items[0] }));
-      this.route.navigate(['']);
+      this.route.navigate(['admin']);
     });
   }
 
   isAuth(): boolean {
+    console.log(this.user)
     if (this.user != null) {
       return true;
     } else {

@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.store.select('user').subscribe( user => {
-      if ( user.data != null ) { this.router.navigate(['']); }
+      if ( user.data != null ) { this.router.navigate(['admin']); }
     });
   }
 

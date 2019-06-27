@@ -1,4 +1,41 @@
-<div>
-  sidevar
-</div>
-<router-outlet></router-outlet>
+<section>
+  <div class="side-nav">
+    <div class="row m-2">
+      <div class="col-12mt-5">
+        <img src="./assets/img/sidemenu/Logo.png" alt="logo">
+      </div>
+
+      <h4 class="col-12 text-white mt-4"> DIRECTORIOS </h4>
+      <a class="col-12" [routerLink]="[ '/admin/usuarios' ]" routerLinkActive="active-link">
+        <mat-icon class="text-white">bookmark</mat-icon> Usuarios
+      </a>
+      <a class="col-12" [routerLink]="[ '/admin/servicios' ]" routerLinkActive="active-link">
+        <mat-icon class="text-white">bookmark</mat-icon> Servicios
+      </a>
+      <a class="col-12" [routerLink]="[ '/admin/carros' ]" routerLinkActive="active-link">
+        <mat-icon class="text-white">bookmark</mat-icon> Carros categorizados
+      </a>
+      <a class="col-12" [routerLink]="[ '/admin/carros' ]" routerLinkActive="active-link">
+        <mat-icon class="text-white">bookmark</mat-icon> Nuevos carros
+      </a>
+
+      <h4 class="col-12 text-white mt-4"> MANEJO DE USUARIOS </h4>
+      <a class="col-12" [routerLink]="[ '/admin/carros' ]" routerLinkActive="active-link">
+        <mat-icon class="text-white">bookmark</mat-icon> Perfil
+      </a>
+      <a class="col-12" [routerLink]="[ '/admin/carros' ]" routerLinkActive="active-link">
+        <mat-icon class="text-white">bookmark</mat-icon> Estadisticas
+      </a>
+      <a class="col-12" [routerLink]="[ '/admin/carros' ]" routerLinkActive="active-link">
+        <mat-icon class="text-white">bookmark</mat-icon> Pagos
+      </a>
+
+      <a class="col-12 d-line mt-4" [routerLink]="[ '/admin/carros' ]" routerLinkActive="active-link">
+        <mat-icon class="text-white">exit_to_app</mat-icon> Logout
+      </a>
+    </div>
+  </div>
+  <div class="side-container">
+    <router-outlet></router-outlet>
+  </div>
+</section>

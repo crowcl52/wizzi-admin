@@ -13,7 +13,7 @@ client: any;
   constructor(private userService: UserService) {
     this.nav = 'admin';
     this.active = true;
-    this.userService.GetUsers().subscribe( data => {
+    this.userService.GetUsers().subscribe( (data: any) => {
       console.log(data);
       this.client = data.data.items;
     })
