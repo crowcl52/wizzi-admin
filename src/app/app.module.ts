@@ -24,6 +24,11 @@ import { EstadisticaComponent } from './panel/manejo-usuario/estadistica/estadis
 import { PagoComponent } from './panel/manejo-usuario/pago/pago.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminAddComponent } from './panel/directorios/usuarios/admin-add/admin-add.component';
+import { AdminModifyComponent } from './panel/directorios/usuarios/admin-modify/admin-modify.component';
+import { ClientComponent } from './panel/directorios/usuarios/client/client.component';
+import { WiziAddComponent } from './panel/directorios/usuarios/wizi-add/wizi-add.component';
+import { WiziModifyComponent } from './panel/directorios/usuarios/wizi-modify/wizi-modify.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,12 @@ import { HttpClientModule } from '@angular/common/http';
     PanelComponent,
     PerfilComponent,
     EstadisticaComponent,
-    PagoComponent
+    PagoComponent,
+    AdminAddComponent,
+    AdminModifyComponent,
+    ClientComponent,
+    WiziAddComponent,
+    WiziModifyComponent
   ],
   imports: [
     BrowserModule,

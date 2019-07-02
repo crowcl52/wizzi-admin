@@ -10,17 +10,28 @@ export class UserService {
 
   private token = '';
 
-  constructor(private http:HttpClient, private store: Store<AppState>) { 
+  constructor(private http:HttpClient, private store: Store<AppState>) {
     this.store.select('user').subscribe( user => {
       console.log(user.data.token);
       this.token = user.data.token;
     });
    }
-  public GetUsers(){
-    const Header = new HttpHeaders({
-      'Authorization': 'Bearer ' + this.token
-    });
-    
-    return this.http.get(`https://api.wizi.mx/users`, { headers: Header });
-  }
+   public GetClients(){
+     const Header = new HttpHeaders({
+       'Authorization': 'Bearer ' + this.token
+     });
+     return this.http.get(`https://api.wizi.mx/users`, { headers: Header });
+   }
+   public GetAdmins(){
+     const Header = new HttpHeaders({
+       'Authorization': 'Bearer ' + this.token
+     });
+     return this.http.get(`https://api.wizi.mx/users`, { headers: Header });
+   }
+   public GetWizis(){
+     const Header = new HttpHeaders({
+       'Authorization': 'Bearer ' + this.token
+     });
+     return this.http.get(`https://api.wizi.mx/users`, { headers: Header });
+   }
 }
