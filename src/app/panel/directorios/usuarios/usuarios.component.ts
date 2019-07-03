@@ -40,6 +40,9 @@ GetWizis: any;
   editAdmin(){
     this._router.navigate(['/admin/AdminModify']);
   }
+  client(){
+    this._router.navigate(['/admin/Client']);
+  }
   ngOnInit() {
   }
 
