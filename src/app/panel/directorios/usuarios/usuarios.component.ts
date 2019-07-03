@@ -37,6 +37,9 @@ GetWizis: any;
       this._router.navigate(['/admin/WiziAdd']);
     }
   }
+  editAdmin(){
+    this._router.navigate(['/admin/AdminModify']);
+  }
   ngOnInit() {
   }
 

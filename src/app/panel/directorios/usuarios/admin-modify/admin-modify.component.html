@@ -1,3 +1,65 @@
-<p>
-  admin-modify works!
-</p>
+<div class="admin-wrapper">
+    <div class="admin-content">
+        <div class="title">
+            <h3>Usuarios</h3>
+        </div>
+        <div class="title large">
+            <h5>Datos de Administrador</h5>
+        </div>
+        <div class="buttons">
+            <div class="info">
+                <img src="https://www.loginradius.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" />
+                <label>Fernando Cortes Villalobos</label>
+            </div>
+            <div class="buttons-wrapper">
+                <button class="black">regresar</button>
+                <button class="pink">guardar</button>
+            </div>
+        </div>
+        <div class="input-content">
+            <div class="inputs-wrapper">
+                <div class="input">
+                    <label>Nombre</label>
+                    <input type="text" />
+                </div>
+                <div class="input">
+                    <label>Teléfono</label>
+                    <input type="number" />
+                </div>
+            </div>
+            <div class="inputs-wrapper">
+                <div class="input">
+                    <label>Apellido</label>
+                    <input type="text" />
+                </div>
+                <div class="input">
+                    <label>Email</label>
+                    <input type="email" />
+                </div>
+            </div>
+        </div>
+        <div class="super-admin">
+            <h4>Activar o desactivar cuenta</h4>
+            <div class="check">
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+              </label>
+                <p *ngIf="true">Inactivo</p>
+                <p *ngIf="false">Activo</p>
+            </div>
+        </div>
+        <hr>
+        <div class="super-admin">
+            <h4>Permiso de super admin</h4>
+            <div class="check">
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+              </label>
+                <p *ngIf="true">Inactivo</p>
+                <p *ngIf="false">Activo</p>
+            </div>
+        </div>
+    </div>
+</div>
