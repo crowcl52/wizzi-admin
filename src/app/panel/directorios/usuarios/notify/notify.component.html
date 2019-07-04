@@ -1,0 +1,65 @@
+<div class="admin-wrapper">
+    <div class="admin-content">
+        <div class="title" style="justify-content: space-between">
+            <h3>Peticiones Wizipecialistas Externos</h3>
+            <div *ngIf="services" class="input-content" style="width: fit-content;margin: 0;padding: 0;border: none;">
+                <div class="inputs-wrapper">
+                    <div class="input">
+                        <label>Email</label>
+                        <i [ngClass]="{'none': search}" style="margin: 40px 8px; position: absolute;" class="fas fa-search"></i>
+                        <input type="email" (click)="search = !search" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="title large">
+            <h5 (click)="services = !services" [ngClass]="{'pink': !services}">Pendientes</h5>
+            <h5 (click)="services = !services" [ngClass]="{'pink': services}">Historial</h5>
+        </div>
+        <div [hidden]="services" class="buttons" *ngFor="let user of GetAdmins; let i = index">
+            <div class="info">
+                <img src="https://www.loginradius.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" />
+                <label>Fernando Cortes Villalobos
+                  <span>12/03/19 20:04</span>
+                </label>
+            </div>
+            <div class="buttons-wrapper">
+                <button class="black" [routerLink]="['/admin/usuarios']">regresar</button>
+                <button class="pink">guardar</button>
+            </div>
+        </div>
+        <table *ngIf="services">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>Fecha petición</th>
+                    <th>Teléfono</th>
+                    <th>
+                        Email
+                    </th>
+                    <th>Estatus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of GetAdmins; let i = index">
+                    <td>
+                        <img src="./../../../../assets/descarga.png" />
+                    </td>
+                    <td>
+                        {{ user.fullname }}
+                    </td>
+                    <td>12/03/19 20:04</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <button class="active" (click)="active = !active" *ngIf="active">Aceptada</button>
+                        <button class="inactive" (click)="active = !active" *ngIf="!active">Rechazada</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

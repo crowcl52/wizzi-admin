@@ -29,6 +29,7 @@ import { AdminModifyComponent } from './panel/directorios/usuarios/admin-modify/
 import { ClientComponent } from './panel/directorios/usuarios/client/client.component';
 import { WiziAddComponent } from './panel/directorios/usuarios/wizi-add/wizi-add.component';
 import { WiziModifyComponent } from './panel/directorios/usuarios/wizi-modify/wizi-modify.component';
+import { NotifyComponent } from './panel/directorios/usuarios/notify/notify.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { WiziModifyComponent } from './panel/directorios/usuarios/wizi-modify/wi
     AdminModifyComponent,
     ClientComponent,
     WiziAddComponent,
-    WiziModifyComponent
+    WiziModifyComponent,
+    NotifyComponent
   ],
   imports: [
     BrowserModule,

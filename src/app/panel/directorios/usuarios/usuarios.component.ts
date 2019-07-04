@@ -13,9 +13,15 @@ active: boolean;
 GetClients: any;
 GetAdmins: any;
 GetWizis: any;
+  aux: any;
+  options: boolean;
+  search: boolean;
   constructor(private userService: UserService, private _router: Router) {
     this.nav = 'admin';
     this.active = true;
+    this.search = false;
+    this.aux = -1;
+    this.options = false;
     this.userService.GetClients().subscribe( (data: any) => {
       console.log(data);
       this.GetClients = data.data.items;
@@ -37,11 +43,14 @@ GetWizis: any;
       this._router.navigate(['/admin/WiziAdd']);
     }
   }
-  editAdmin(){
-    this._router.navigate(['/admin/AdminModify']);
+  editAdmin(id){
+    this._router.navigate(['/admin/AdminModify', id]);
   }
-  client(){
-    this._router.navigate(['/admin/Client']);
+  editWizi(id){
+    this._router.navigate(['/admin/WiziModify', id]);
+  }
+  client(id){
+    this._router.navigate(['/admin/Client', id]);
   }
   ngOnInit() {
   }

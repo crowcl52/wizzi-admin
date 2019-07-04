@@ -35,6 +35,7 @@
                 width: 200px;
                 justify-content: center;
                 color: #4e73b7;
+                cursor: pointer;
             }
             .pink {
                 border-bottom: 2px #c02278 solid;
@@ -62,6 +63,13 @@
                     font-weight: 500;
                     line-height: 1.2;
                     font-size: 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    span {
+                        font-size: 16px;
+                        margin-top: 8px;
+                        font-weight: 700;
+                    }
                 }
             }
             .buttons-wrapper {
@@ -330,4 +338,8 @@ td {
         height: 100px;
         padding: 8px;
     }
+}
+
+.none {
+    display: none;
 }

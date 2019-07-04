@@ -1,3 +1,4 @@
+import { NotifyComponent } from './panel/directorios/usuarios/notify/notify.component';
 import { WiziModifyComponent } from './panel/directorios/usuarios/wizi-modify/wizi-modify.component';
 import { WiziAddComponent } from './panel/directorios/usuarios/wizi-add/wizi-add.component';
 import { AdminModifyComponent } from './panel/directorios/usuarios/admin-modify/admin-modify.component';
@@ -18,11 +19,12 @@ const routes: Routes = [
     canActivate: [AuthguardService],
     children: [
       { path: 'usuarios', component: UsuariosComponent },
+      { path: 'notify', component: NotifyComponent },
       { path: 'AdminAdd', component: AdminAddComponent },
-      { path: 'AdminModify', component: AdminModifyComponent },
-      { path: 'Client', component: ClientComponent },
+      { path: 'AdminModify/:id', component: AdminModifyComponent },
+      { path: 'Client/:id', component: ClientComponent },
       { path: 'WiziAdd', component: WiziAddComponent },
-      { path: 'WiziModify', component: WiziModifyComponent },
+      { path: 'WiziModify/:id', component: WiziModifyComponent },
       { path: 'servicios', component: ServiciosComponent },
       { path: 'carros', component: ServiciosComponent },
       { path: '**', redirectTo: 'usuarios' }

@@ -7,11 +7,11 @@
             <h2>Usuarios</h2>
             <div class="user-buttons">
                 <a (click)="navigate()" *ngIf="nav != 'client'"><i class="fas fa-plus"></i></a>
-                <a><i class="fas fa-bell"></i></a>
+                <a><i class="fas fa-bell"  [routerLink]="['/admin/notify']"></i></a>
                 <div class="number-pink">3</div>
                 <div class="input">
                     <i class="fas fa-search"></i>
-                    <input type="text" name="search" />
+                    <input type="text" name="search" (click)="search = !search" />
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of GetAdmins" (click)="editAdmin();">
+                    <tr *ngFor="let user of GetAdmins; let i = index">
                         <td>
                             <img src="./../../../../assets/descarga.png" />
                         </td>
@@ -58,24 +58,28 @@
                             <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
                         </td>
                         <td class="point-more">
-                            <button>
-                            <i class="fas fa-ellipsis-h"></i>
-                        </button>
+                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
+                                <button (click)="a = !a">
+                              <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                                <div>
+                                    <div class="more-float" *ngIf="a">
+                                        <button (click)="a = false">
+                                      <i class="fas fa-key"></i>
+                                      Deshabilitar
+                                  </button>
+                                        <button (click)="editAdmin(i); a = false">
+                                      <i class="fas fa-edit"></i>
+                                      Edit
+                                  </button>
+                                        <button (click)="a = false">
+                                      <i class="fas fa-trash-alt"></i>
+                                      Delete
+                                  </button>
+                                    </div>
+                                </div>
+                            </ng-template>
                         </td>
-                        <div class="more-float" *ngIf="false">
-                            <button>
-                                <i class="fas fa-key"></i>
-                                Deshabilitar
-                            </button>
-                            <button>
-                                <i class="fas fa-edit"></i>
-                                Edit
-                            </button>
-                            <button>
-                                <i class="fas fa-trash-alt"></i>
-                                Delete
-                            </button>
-                        </div>
                     </tr>
                 </tbody>
             </table>
@@ -100,7 +104,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of GetWizis">
+                    <tr *ngFor="let user of GetWizis; let i = index">
                         <td class="five">
                             <img src="./../../../../assets/descarga.png" />
                         </td>
@@ -120,24 +124,28 @@
                             <button class="inactive" (click)="active = !active" *ngIf="!active">Activo</button>
                         </td>
                         <td class="five point-more">
-                            <button>
-                                <i class="fas fa-ellipsis-h"></i>
+                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
+                                <button (click)="a = !a">
+                              <i class="fas fa-ellipsis-h"></i>
                             </button>
+                                <div>
+                                    <div class="more-float" *ngIf="a">
+                                        <button (click)="a = false">
+                                      <i class="fas fa-key"></i>
+                                      Deshabilitar
+                                  </button>
+                                        <button (click)="editWizi(i); a = false">
+                                      <i class="fas fa-edit"></i>
+                                      Edit
+                                  </button>
+                                        <button (click)="a = false">
+                                      <i class="fas fa-trash-alt"></i>
+                                      Delete
+                                  </button>
+                                    </div>
+                                </div>
+                            </ng-template>
                         </td>
-                        <div class="more-float" *ngIf="false">
-                            <button>
-                                <i class="fas fa-key"></i>
-                                Deshabilitar
-                            </button>
-                            <button>
-                                <i class="fas fa-edit"></i>
-                                Edit
-                            </button>
-                            <button>
-                                <i class="fas fa-trash-alt"></i>
-                                Delete
-                            </button>
-                        </div>
                     </tr>
                 </tbody>
             </table>
@@ -158,7 +166,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of GetClients" (click)="client()">
+                    <tr *ngFor="let user of GetClients; let i = index">
                         <td>
                             <img src="./../../../../assets/descarga.png" />
                         </td>
@@ -172,24 +180,28 @@
                             <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
                         </td>
                         <td class="point-more">
-                            <button>
+                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
+                                <button (click)="a = !a">
                               <i class="fas fa-ellipsis-h"></i>
-                          </button>
+                            </button>
+                                <div>
+                                    <div class="more-float" *ngIf="a">
+                                        <button (click)="a = false">
+                                      <i class="fas fa-key"></i>
+                                      Deshabilitar
+                                  </button>
+                                        <button (click)="client(i); a = false">
+                                      <i class="fas fa-edit"></i>
+                                      Edit
+                                  </button>
+                                        <button (click)="a = false">
+                                      <i class="fas fa-trash-alt"></i>
+                                      Delete
+                                  </button>
+                                    </div>
+                                </div>
+                            </ng-template>
                         </td>
-                        <div class="more-float" *ngIf="false">
-                            <button>
-                              <i class="fas fa-key"></i>
-                              Deshabilitar
-                          </button>
-                            <button>
-                              <i class="fas fa-edit"></i>
-                              Edit
-                          </button>
-                            <button>
-                              <i class="fas fa-trash-alt"></i>
-                              Delete
-                          </button>
-                        </div>
                     </tr>
                 </tbody>
             </table>
