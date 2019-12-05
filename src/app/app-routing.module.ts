@@ -11,6 +11,8 @@ import { ServiciosComponent } from './panel/directorios/servicios/servicios.comp
 import { AuthguardService } from './auth/authguard.service';
 import { AdminAddComponent } from './panel/directorios/usuarios/admin-add/admin-add.component';
 import { ClientComponent } from './panel/directorios/usuarios/client/client.component';
+import { PerfilComponent } from './panel/manejo-usuario/perfil/perfil.component';
+import { PagoComponent } from './panel/manejo-usuario/pago/pago.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,6 +29,8 @@ const routes: Routes = [
       { path: 'WiziModify/:id', component: WiziModifyComponent },
       { path: 'servicios', component: ServiciosComponent },
       { path: 'carros', component: ServiciosComponent },
+      { path: 'perfil', component: PerfilComponent },
+      { path: 'pagos', component: PagoComponent },
       { path: '**', redirectTo: 'usuarios' }
     ]
   },

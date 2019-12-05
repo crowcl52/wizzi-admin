@@ -1,0 +1,25 @@
+.info {
+    display: flex;
+    justify-content: flex-start;
+    width: fit-content;
+    align-items: center;
+    img {
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        margin-right: 16px;
+    }
+    label {
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        line-height: 1.2;
+        font-size: 2rem;
+        display: flex;
+        flex-direction: column;
+        span {
+            font-size: 16px;
+            margin-top: 8px;
+            font-weight: 700;
+        }
+    }
+}

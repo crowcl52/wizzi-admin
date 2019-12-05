@@ -6,7 +6,8 @@
                 <div class="inputs-wrapper">
                     <div class="input">
                         <label>Email</label>
-                        <i [ngClass]="{'none': search}" style="margin: 40px 8px; position: absolute;" class="fas fa-search"></i>
+                        <i [ngClass]="{'none': search}" style="margin: 40px 8px; position: absolute;"
+                            class="fas fa-search"></i>
                         <input type="email" (click)="search = !search" />
                     </div>
                 </div>
@@ -18,9 +19,10 @@
         </div>
         <div [hidden]="services" class="buttons" *ngFor="let user of GetAdmins; let i = index">
             <div class="info">
-                <img src="https://www.loginradius.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" />
+                <img
+                    src="https://www.loginradius.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" />
                 <label>Fernando Cortes Villalobos
-                  <span>12/03/19 20:04</span>
+                    <span>12/03/19 20:04</span>
                 </label>
             </div>
             <div class="buttons-wrapper">

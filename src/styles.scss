@@ -33,3 +33,27 @@ $pink : #C02278;
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+
+  .buttons-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: fit-content;
+    align-items: center;
+    button {
+        width: 175px;
+        height: 40px;
+        margin-left: 32px;
+        color: white;
+        text-transform: uppercase;
+        border: none;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+    .black {
+        background-color: black;
+    }
+    .pink {
+        background-color: #c02278;
+    }
+}
+
