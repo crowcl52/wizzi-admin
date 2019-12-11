@@ -1,3 +1,46 @@
-<p>
-  carros-categorizados works!
-</p>
+<div class="user-wrapper">
+  <div class="user-container">
+    <div class="email">
+      <label>Marca</label>
+    </div>
+    <div class="user-head">
+      <h2>Carros</h2>
+      <div class="user-buttons">
+        <a (click)="navigate()" *ngIf="nav != 'client'"><i class="fas fa-plus"></i></a>
+        <a><i class="fas fa-bell"  [routerLink]="['/admin/notify']"></i></a>
+        <div class="number-pink">3</div>
+        <div class="input">
+            <i class="fas fa-search"></i>
+            <input type="text" name="search" (click)="search = !search" />
+        </div>
+    </div>
+    </div>
+    <div class="user-tables">
+      <table>
+        <thead>
+          <tr>
+            <th class="twenty"> Marca</th>
+            <th> Modelo</th>
+            <th>Tamaño </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {{ 'user.fullname' }}
+            </td>
+            <td>{{ 'user.phone '}}</td>
+            <td>{{' user.email' }}</td>
+
+            <td class="point-more">
+              <button (click)="a = !a">
+                <i class="fas fa-ellipsis-h"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

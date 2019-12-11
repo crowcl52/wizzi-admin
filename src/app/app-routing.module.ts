@@ -13,6 +13,8 @@ import { AdminAddComponent } from './panel/directorios/usuarios/admin-add/admin-
 import { ClientComponent } from './panel/directorios/usuarios/client/client.component';
 import { PerfilComponent } from './panel/manejo-usuario/perfil/perfil.component';
 import { PagoComponent } from './panel/manejo-usuario/pago/pago.component';
+import { CarrosCategorizadosComponent } from './panel/directorios/carros-categorizados/carros-categorizados.component';
+import { CarrosCatDetailComponent } from './panel/directorios/carros-categorizados/carros-cat-detail/carros-cat-detail.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,7 +30,8 @@ const routes: Routes = [
       { path: 'WiziAdd', component: WiziAddComponent },
       { path: 'WiziModify/:id', component: WiziModifyComponent },
       { path: 'servicios', component: ServiciosComponent },
-      { path: 'carros', component: ServiciosComponent },
+      { path: 'carros-categorizados', component: CarrosCategorizadosComponent },
+      { path: 'carros-categorizados/:id', component: CarrosCatDetailComponent },
       { path: 'perfil', component: PerfilComponent },
       { path: 'pagos', component: PagoComponent },
       { path: '**', redirectTo: 'usuarios' }

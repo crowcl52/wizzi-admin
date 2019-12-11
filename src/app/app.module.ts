@@ -30,6 +30,7 @@ import { ClientComponent } from './panel/directorios/usuarios/client/client.comp
 import { WiziAddComponent } from './panel/directorios/usuarios/wizi-add/wizi-add.component';
 import { WiziModifyComponent } from './panel/directorios/usuarios/wizi-modify/wizi-modify.component';
 import { NotifyComponent } from './panel/directorios/usuarios/notify/notify.component';
+import { CarrosCatDetailComponent } from './panel/directorios/carros-categorizados/carros-cat-detail/carros-cat-detail.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { NotifyComponent } from './panel/directorios/usuarios/notify/notify.comp
     ClientComponent,
     WiziAddComponent,
     WiziModifyComponent,
-    NotifyComponent
+    NotifyComponent,
+    CarrosCatDetailComponent
   ],
   imports: [
     BrowserModule,
