@@ -30,6 +30,9 @@ export class UsuariosComponent implements OnInit {
     this.search = false;
     this.aux = -1;
     this.options = false;
+    this.GetClientsFunction();
+    this.GetAdminsFunction();
+    this.GetWizisFunction();
   }
   GetClientsFunction(){
     this.userService.GetClients().subscribe( (data: any) => {
@@ -153,6 +156,40 @@ export class UsuariosComponent implements OnInit {
   }
   client(id){
     this._router.navigate(['/admin/Client', id]);
+  }
+  deleteAdmin(id){
+    this.userService.DeleteAdmin(id).subscribe( data => {
+      console.log(data);
+    })
+  }
+  deleteWizi(id){
+    this.userService.DeleteWizi(id).subscribe( data => {
+      console.log(data);
+    })
+  }
+  deleteClient(id){
+    this.userService.DeleteClient(id).subscribe( data => {
+      console.log(data);
+    })
+  }
+
+  dishableAdmin(id){
+
+  }
+  hableAdmin(id){
+
+  }
+  dishableWizi(id){
+
+  }
+  hableWizi(id){
+
+  }
+  dishableClient(id){
+
+  }
+  hableClient(id){
+
   }
   ngOnInit() {
   }

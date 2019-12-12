@@ -64,18 +64,18 @@
                             </button>
                                 <div>
                                     <div class="more-float" *ngIf="a">
-                                        <button (click)="a = false">
-                                      <i class="fas fa-key"></i>
-                                      Deshabilitar
-                                  </button>
-                                        <button (click)="editAdmin(i); a = false">
-                                      <i class="fas fa-edit"></i>
-                                      Edit
-                                  </button>
-                                        <button (click)="a = false">
-                                      <i class="fas fa-trash-alt"></i>
-                                      Delete
-                                  </button>
+                                        <button>
+                                            <i class="fas fa-key"></i>
+                                            Deshabilitar
+                                        </button>
+                                        <button (click)="editAdmin(user.id);">
+                                            <i class="fas fa-edit"></i>
+                                            Edit
+                                        </button>
+                                        <button (click)="deleteAdmin(user.id)">
+                                            <i class="fas fa-trash-alt"></i>
+                                            Delete
+                                        </button>
                                     </div>
                                 </div>
                             </ng-template>
@@ -130,15 +130,15 @@
                             </button>
                                 <div>
                                     <div class="more-float" *ngIf="a">
-                                        <button (click)="a = false">
+                                        <button>
                                       <i class="fas fa-key"></i>
                                       Deshabilitar
                                   </button>
-                                        <button (click)="editWizi(i); a = false">
+                                        <button (click)="editWizi(user.id)">
                                       <i class="fas fa-edit"></i>
                                       Edit
                                   </button>
-                                        <button (click)="a = false">
+                                        <button (click)="deleteWizi(user.id)">
                                       <i class="fas fa-trash-alt"></i>
                                       Delete
                                   </button>
@@ -190,14 +190,14 @@
                                       <i class="fas fa-key"></i>
                                       Deshabilitar
                                   </button>
-                                        <button (click)="client(i); a = false">
-                                      <i class="fas fa-edit"></i>
-                                      Edit
-                                  </button>
-                                        <button (click)="a = false">
-                                      <i class="fas fa-trash-alt"></i>
-                                      Delete
-                                  </button>
+                                        <button (click)="client(user.id)">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </button>
+                                        <button (click)="deleteClient(user.id)">
+                                <i class="fas fa-trash-alt"></i>
+                                Delete
+                            </button>
                                     </div>
                                 </div>
                             </ng-template>
