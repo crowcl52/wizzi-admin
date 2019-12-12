@@ -1,0 +1,11 @@
+<h3 mat-dialo-title> Modelo </h3>
+<div mat-dialog-content>
+    <mat-form-field appearance="outline">
+        <mat-label>Modelo</mat-label>
+        <input [(ngModel)]="data.name" matInput>
+    </mat-form-field>
+</div>
+<div class="buttons-wrapper" mat-dialog-actions align="end">
+    <button class="black" (click)="onNoClick()" >Cancelar</button>
+    <button class="pink" (click)="editModel()" [disabled]="!(data.name.length > 0)" >Guardar</button>
+</div>

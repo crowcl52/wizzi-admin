@@ -1,3 +1,46 @@
-<p>
-  nuevos-carros works!
-</p>
+<div class="user-wrapper">
+  <div class="user-container">
+    <div class="email">
+      <label>Marca</label>
+    </div>
+    <div class="user-head">
+      <h2>Carros</h2>
+      <div class="user-buttons">
+        <a (click)="navigate()" *ngIf="nav != 'client'"><i class="fas fa-plus"></i></a>
+        <a><i class="fas fa-bell" [routerLink]="['/admin/notify']"></i></a>
+        <div class="number-pink">3</div>
+        <div class="input">
+          <i class="fas fa-search"></i>
+          <input type="text" name="search" (click)="search = !search" />
+        </div>
+      </div>
+    </div>
+    <div class="user-tables">
+      <table>
+        <thead>
+          <tr>
+            <th class="twenty text-center"> Marca</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of cars" (click)="goModels(c.id,c.name)" >
+            <td class="text-center p-4">
+              {{ c.name }}
+            </td>
+            <td class="point-more">
+              <button mat-button (click)="carId = c.id" [matMenuTriggerFor]="menu"> <i class="fas fa-ellipsis-h"></i> </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- Option Menu -->
+<mat-menu #menu="matMenu">
+  <button mat-menu-item class="txt-pink" (click)="editCar()" > <i class="fas fa-edit"></i> Edit </button>
+  <button mat-menu-item class="txt-pink" ><i class="fas fa-trash-alt"></i> Delete</button>
+</mat-menu>

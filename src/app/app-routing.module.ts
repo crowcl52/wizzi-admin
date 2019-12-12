@@ -15,6 +15,8 @@ import { PerfilComponent } from './panel/manejo-usuario/perfil/perfil.component'
 import { PagoComponent } from './panel/manejo-usuario/pago/pago.component';
 import { CarrosCategorizadosComponent } from './panel/directorios/carros-categorizados/carros-categorizados.component';
 import { CarrosCatDetailComponent } from './panel/directorios/carros-categorizados/carros-cat-detail/carros-cat-detail.component';
+import { NuevosCarrosComponent } from './panel/directorios/nuevos-carros/nuevos-carros.component';
+import { NuevosCarrosModeloComponent } from './panel/directorios/nuevos-carros/nuevos-carros-modelo/nuevos-carros-modelo.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -32,6 +34,8 @@ const routes: Routes = [
       { path: 'servicios', component: ServiciosComponent },
       { path: 'carros-categorizados', component: CarrosCategorizadosComponent },
       { path: 'carros-categorizados/:id', component: CarrosCatDetailComponent },
+      { path: 'nuevos-carros', component: NuevosCarrosComponent },
+      { path: 'modelos-carros/:id/:brand', component: NuevosCarrosModeloComponent },
       { path: 'perfil', component: PerfilComponent },
       { path: 'pagos', component: PagoComponent },
       { path: '**', redirectTo: 'usuarios' }

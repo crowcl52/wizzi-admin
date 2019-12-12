@@ -4,7 +4,6 @@ import { AppState } from '../app.reducer';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { User } from '../models/user.model';
 import { ActivateUserAction, DeactivateUserAction } from '../redux/user.actions';
 
 @Injectable({

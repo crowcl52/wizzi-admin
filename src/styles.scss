@@ -8,6 +8,10 @@ $pink : #C02278;
     background: $pink!important;
 }
 
+.txt-pink{
+  color: $pink!important;
+}
+
 .active-link{
   background: $pink;
   border-radius: 10px;
@@ -57,3 +61,6 @@ $pink : #C02278;
     }
 }
 
+.cursor{
+  cursor: pointer;
+}

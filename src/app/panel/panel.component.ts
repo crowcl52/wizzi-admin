@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.reducer';
+import { CarsService } from './services/cars.service';
 
 @Component({
   selector: 'app-panel',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelComponent implements OnInit {
 
-  constructor() { }
+  constructor( private carsService:CarsService ) { }
 
   ngOnInit() {
+    this.carsService.getCarsBrands();
   }
 
 }

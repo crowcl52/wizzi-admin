@@ -31,6 +31,9 @@ import { WiziAddComponent } from './panel/directorios/usuarios/wizi-add/wizi-add
 import { WiziModifyComponent } from './panel/directorios/usuarios/wizi-modify/wizi-modify.component';
 import { NotifyComponent } from './panel/directorios/usuarios/notify/notify.component';
 import { CarrosCatDetailComponent } from './panel/directorios/carros-categorizados/carros-cat-detail/carros-cat-detail.component';
+import { NuevosCarrosDetailComponent } from './panel/directorios/nuevos-carros/nuevos-carros-detail/nuevos-carros-detail.component';
+import { NuevosCarrosModeloComponent } from './panel/directorios/nuevos-carros/nuevos-carros-modelo/nuevos-carros-modelo.component';
+import { NuevosCarrosModeloDetailComponent } from './panel/directorios/nuevos-carros/nuevos-carros-modelo/nuevos-carros-modelo-detail/nuevos-carros-modelo-detail.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { CarrosCatDetailComponent } from './panel/directorios/carros-categorizad
     WiziAddComponent,
     WiziModifyComponent,
     NotifyComponent,
-    CarrosCatDetailComponent
+    CarrosCatDetailComponent,
+    NuevosCarrosDetailComponent,
+    NuevosCarrosModeloComponent,
+    NuevosCarrosModeloDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +72,9 @@ import { CarrosCatDetailComponent } from './panel/directorios/carros-categorizad
     }),
   ],
   providers: [],
+  entryComponents: [
+    NuevosCarrosModeloDetailComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
