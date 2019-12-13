@@ -34,161 +34,161 @@ export class UsuariosComponent implements OnInit {
     this.GetAdminsFunction();
     this.GetWizisFunction();
   }
-  GetClientsFunction(){
+  GetClientsFunction() {
     this.userService.GetClients().subscribe( (data: any) => {
       console.log(data);
       this.GetClients = data.data.items;
-    })
+    });
   }
-  GetClientFunction(id){
+  GetClientFunction(id) {
     this.userService.GetClient(id).subscribe( (data: any) => {
       console.log(data);
       this.GetClient = data.data.items;
-    })
+    });
   }
-  GetAdminsFunction(){
+  GetAdminsFunction() {
     this.userService.GetAdmins().subscribe( (data: any) => {
       console.log(data);
       this.GetAdmins = data.data.items;
-    })
+    });
   }
-  GetAdminFunction(id){
+  GetAdminFunction(id) {
     this.userService.GetAdmin(this.GetAdmins.id).subscribe( (data: any) => {
       console.log(data);
       this.GetAdmin = data.data.items;
-    })
+    });
   }
-  GetWizisFunction(){
+  GetWizisFunction() {
     this.userService.GetWizis().subscribe( (data: any) => {
       console.log(data);
       this.GetWizis = data.data.items;
-    })
+    });
   }
-  GetWiziFunction(id){
+  GetWiziFunction(id) {
     this.userService.GetWizi(id).subscribe( (data: any) => {
       console.log(data);
       this.GetWizi = data.data.items;
-    })
+    });
   }
-  GetClientServicesFunction(id){
+  GetClientServicesFunction(id) {
     this.userService.GetClientServices(id).subscribe( (data: any) => {
       console.log(data);
       this.GetClientServices = data.data.items;
-    })
+    });
   }
-  GetWiziServicesFunction(id){
+  GetWiziServicesFunction(id) {
     this.userService.GetWiziServices(this.GetWizis.id).subscribe( (data: any) => {
       console.log(data);
       this.GetWiziServices = data.data.items;
-    })
+    });
   }
-  GetCarFunction(id){
+  GetCarFunction(id) {
     this.userService.GetCar(id).subscribe( (data: any) => {
       console.log(data);
       this.GetCar = data.data.items;
-    })
+    });
   }
-  GetBrandFunction(brand){
+  GetBrandFunction(brand) {
     this.userService.GetBrand(brand).subscribe( (data: any) => {
       console.log(data);
       this.GetBrand = data.data.items;
-    })
+    });
   }
-  GetModelFunction(model){
+  GetModelFunction(model) {
     this.userService.GetModel(model).subscribe( (data: any) => {
       console.log(data);
       this.GetModel = data.data.items;
-    })
+    });
   }
-  DeleteAdmin(id){
+  DeleteAdmin(id) {
     this.userService.DeleteAdmin(id).subscribe( (data: any) => {
       console.log(data);
-    })
+    });
   }
-  DeleteWizi(id){
+  DeleteWizi(id) {
     this.userService.DeleteWizi(id).subscribe( (data: any) => {
       console.log(data);
-    })
+    });
   }
-  DeleteClient(id){
+  DeleteClient(id) {
     this.userService.DeleteClient(id).subscribe( (data: any) => {
       console.log(data);
-    })
+    });
   }
-  PatchClient(id, body){
+  PatchClient(id, body) {
     this.userService.PatchClient(id, body).subscribe( (data: any) => {
       console.log(data);
-    })
+    });
   }
-  PatchWizi(id, body){
+  PatchWizi(id, body) {
     this.userService.PatchWizi(id, body).subscribe( (data: any) => {
       console.log(data);
-    })
+    });
   }
-  PatchAdmin(id, body){
+  PatchAdmin(id, body) {
     this.userService.PatchAdmin(id, body).subscribe( (data: any) => {
       console.log(data);
-    })
+    });
   }
-  PostAdmin(body){
+  PostAdmin(body) {
     this.userService.PostAdmin(body).subscribe( (data: any) => {
       console.log(data);
-    })
+    });
   }
-  PostWizi(body){
+  PostWizi(body) {
     this.userService.PostWizi(body).subscribe( (data: any) => {
       console.log(data);
-    })
+    });
   }
-  navigate(){
-    if(this.nav === 'admin'){
+  navigate() {
+    if (this.nav === 'admin') {
       this._router.navigate(['/admin/AdminAdd']);
     }
-    if(this.nav === 'wiz'){
+    if (this.nav === 'wiz') {
       this._router.navigate(['/admin/WiziAdd']);
     }
   }
-  editAdmin(id){
+  editAdmin(id) {
     this._router.navigate(['/admin/AdminModify', id]);
   }
-  editWizi(id){
+  editWizi(id) {
     this._router.navigate(['/admin/WiziModify', id]);
   }
-  client(id){
+  client(id) {
     this._router.navigate(['/admin/Client', id]);
   }
-  deleteAdmin(id){
+  deleteAdmin(id) {
     this.userService.DeleteAdmin(id).subscribe( data => {
       console.log(data);
-    })
+    });
   }
-  deleteWizi(id){
+  deleteWizi(id) {
     this.userService.DeleteWizi(id).subscribe( data => {
       console.log(data);
-    })
+    });
   }
-  deleteClient(id){
+  deleteClient(id) {
     this.userService.DeleteClient(id).subscribe( data => {
       console.log(data);
-    })
+    });
   }
 
-  dishableAdmin(id){
+  dishableAdmin(id) {
 
   }
-  hableAdmin(id){
+  hableAdmin(id) {
 
   }
-  dishableWizi(id){
+  dishableWizi(id) {
 
   }
-  hableWizi(id){
+  hableWizi(id) {
 
   }
-  dishableClient(id){
+  dishableClient(id) {
 
   }
-  hableClient(id){
+  hableClient(id) {
 
   }
   ngOnInit() {

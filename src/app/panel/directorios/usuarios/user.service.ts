@@ -10,121 +10,127 @@ export class UserService {
 
   private token = '';
 
-  constructor(private http:HttpClient, private store: Store<AppState>) {
+  constructor(private http: HttpClient, private store: Store<AppState>) {
     this.store.select('user').subscribe( user => {
       console.log(user.data.token);
       this.token = user.data.token;
     });
    }
-   public GetClients(){
+   public GetClients() {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/users`, { headers: Header });
    }
-   public GetClient(id){
+   public GetClient(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/clients/${id}`, { headers: Header });
    }
-   public GetAdmins(){
+   public GetAdmins() {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/users`, { headers: Header });
    }
-   public GetAdmin(id){
+   public GetAdmin(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/administrators/${id}`, { headers: Header });
    }
-   public GetWizis(){
+   public GetWizis() {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/users`, { headers: Header });
    }
-   public GetWizi(id){
+   public GetWizi(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/users/${id}`, { headers: Header });
    }
-   public GetClientServices(id){
+   public GetClientServices(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/clients/${id}/services`, { headers: Header });
    }
-   public GetWiziServices(id){
+   public GetWiziServices(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/clients/${id}/services`, { headers: Header });
    }
-   public GetCar(id){
+   public GetCar(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/cars/${id}`, { headers: Header });
    }
-   public GetBrand(id){
+   public GetBrand(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/carbrands/${id}`, { headers: Header });
    }
-   public GetModel(id){
+   public GetModel(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.get(`https://api.wizi.mx/carmodels/${id}`, { headers: Header });
    }
-   public DeleteAdmin(id){
+   public DeleteAdmin(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.delete(`https://api.wizi.mx/administrators/${id}`, { headers: Header });
    }
-   public DeleteWizi(id){
+   public DeleteWizi(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.delete(`https://api.wizi.mx/administrators/${id}`, { headers: Header });
    }
-   public DeleteClient(id){
+   public DeleteClient(id) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.delete(`https://api.wizi.mx/clients/${id}`, { headers: Header });
    }
-   public PatchClient(id, body){
+   public PatchUser(id, body) {
+     const Header = new HttpHeaders({
+       'Authorization': 'Bearer ' + this.token
+     });
+     return this.http.patch(`https://api.wizi.mx/users/${id}`, body, { headers: Header });
+   }
+   public PatchClient(id, body) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.patch(`https://api.wizi.mx/clients/${id}`, { headers: Header });
    }
-   public PatchWizi(id, body){
+   public PatchWizi(id, body) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.patch(`https://api.wizi.mx/clients/${id}`, { headers: Header });
    }
-   public PatchAdmin(id, body){
+   public PatchAdmin(id, body) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.patch(`https://api.wizi.mx/administrators/${id}`, { headers: Header });
    }
-   public PostAdmin(body){
+   public PostAdmin(body) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });
      return this.http.post(`https://api.wizi.mx/administrators`, { headers: Header });
    }
-   public PostWizi(body){
+   public PostWizi(body) {
      const Header = new HttpHeaders({
        'Authorization': 'Bearer ' + this.token
      });

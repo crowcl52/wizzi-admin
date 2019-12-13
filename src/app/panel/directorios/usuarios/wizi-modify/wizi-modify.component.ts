@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-wizi-modify',
@@ -23,118 +24,42 @@ export class WiziModifyComponent implements OnInit {
   GetCar: any;
   GetBrand: any;
   GetModel: any;
-  constructor(private userService: UserService) {
+  object: any;
+  id: number;
+  constructor(private route: ActivatedRoute, private userService: UserService) {
     this.services = false;
     this.active = true;
+    this.id = +this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
+    this.userService.GetWizi(this.id).subscribe( data => {
+      console.log(data);
+      this.object = {
+        name: data['data']['items']['0']['fullname'],
+        last: data['data']['items']['0']['fullname'],
+        phone: data['data']['items']['0']['phone'],
+        email: data['data']['items']['0']['email'],
+      };
+      console.log(this.object);
+    });
+  }
 
+  change(value, name) {
+    this.object[name] = value;
   }
 
-  GetClientsFunction(){
-    this.userService.GetClients().subscribe( (data: any) => {
-      console.log(data);
-      this.GetClients = data.data.items;
-    })
-  }
-  GetClientFunction(id){
-    this.userService.GetClient(id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetClient = data.data.items;
-    })
-  }
-  GetAdminsFunction(){
-    this.userService.GetAdmins().subscribe( (data: any) => {
-      console.log(data);
-      this.GetAdmins = data.data.items;
-    })
-  }
-  GetAdminFunction(id){
-    this.userService.GetAdmin(this.GetAdmins.id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetAdmin = data.data.items;
-    })
-  }
-  GetWizisFunction(){
-    this.userService.GetWizis().subscribe( (data: any) => {
-      console.log(data);
-      this.GetWizis = data.data.items;
-    })
-  }
-  GetWiziFunction(id){
-    this.userService.GetWizi(id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetWizi = data.data.items;
-    })
-  }
-  GetClientServicesFunction(id){
-    this.userService.GetClientServices(id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetClientServices = data.data.items;
-    })
-  }
-  GetWiziServicesFunction(id){
-    this.userService.GetWiziServices(this.GetWizis.id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetWiziServices = data.data.items;
-    })
-  }
-  GetCarFunction(id){
-    this.userService.GetCar(id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetCar = data.data.items;
-    })
-  }
-  GetBrandFunction(brand){
-    this.userService.GetBrand(brand).subscribe( (data: any) => {
-      console.log(data);
-      this.GetBrand = data.data.items;
-    })
-  }
-  GetModelFunction(model){
-    this.userService.GetModel(model).subscribe( (data: any) => {
-      console.log(data);
-      this.GetModel = data.data.items;
-    })
-  }
-  DeleteAdmin(id){
-    this.userService.DeleteAdmin(id).subscribe( (data: any) => {
+
+  PatchUser(){
+    const body = {
+      fullname: this.object.name + ' ' + this.object.last,
+      phone: this.object.phone,
+      email: this.object.email,
+    }
+    console.log(body);
+    this.userService.PatchUser(this.id, body).subscribe( (data: any) => {
       console.log(data);
     })
   }
-  DeleteWizi(id){
-    this.userService.DeleteWizi(id).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  DeleteClient(id){
-    this.userService.DeleteClient(id).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  PatchClient(id, body){
-    this.userService.PatchClient(id, body).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  PatchWizi(id, body){
-    this.userService.PatchWizi(id, body).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  PatchAdmin(id, body){
-    this.userService.PatchAdmin(id, body).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  PostAdmin(body){
-    this.userService.PostAdmin(body).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  PostWizi(body){
-    this.userService.PostWizi(body).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
+
   ngOnInit() {
   }
 

@@ -16,32 +16,32 @@
             </div>
             <div class="buttons-wrapper">
                 <button class="black" [routerLink]="['/admin/usuarios']">regresar</button>
-                <button class="pink">guardar</button>
+                <button class="pink" (click)="PatchUser()">guardar</button>
             </div>
         </div>
         <div *ngIf="!services" class="input-content">
             <div class="inputs-wrapper">
                 <div class="input">
                     <label>Editar Nombre</label>
-                    <input type="text" />
+                    <input (change)="change($event.srcElement.value, 'name')" [value]="object.name" type="text" />
                 </div>
                 <div class="input">
                     <label>Editar Teléfono</label>
-                    <input type="number" />
+                    <input (change)="change($event.srcElement.value, 'phone')" [value]="object.phone" type="number" />
                 </div>
             </div>
             <div class="inputs-wrapper">
                 <div class="input">
                     <label>Editar Apellido</label>
-                    <input type="text" />
+                    <input (change)="change($event.srcElement.value, 'last')" [value]="object.last" type="text" />
                 </div>
                 <div class="input">
                     <label>Editar Email</label>
-                    <input type="email" />
+                    <input (change)="change($event.srcElement.value, 'email')" [value]="object.email" type="email" />
                 </div>
             </div>
         </div>
-        <h5 *ngIf="!services" class="autos">Información Adicional y Contavto de Emergencia</h5>
+        <h5 *ngIf="!services" class="autos">Información Adicional y Contacto de Emergencia</h5>
         <div *ngIf="!services" class="input-content">
             <div class="inputs-wrapper">
                 <div class="input">

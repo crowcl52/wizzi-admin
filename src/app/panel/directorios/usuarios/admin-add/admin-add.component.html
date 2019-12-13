@@ -5,27 +5,27 @@
         </div>
         <div class="buttons">
             <button class="black" [routerLink]="['/admin/usuarios']">cancelar</button>
-            <button class="pink">crear cuenta</button>
+            <button class="pink" (click)="PostAdmin()">crear cuenta</button>
         </div>
         <div class="input-content">
             <div class="inputs-wrapper">
                 <div class="input">
                     <label>Nombre <span>*</span></label>
-                    <input type="text" />
+                    <input (change)="change($event.srcElement.value, 'name')" [value]="object.name" type="text" />
                 </div>
                 <div class="input">
                     <label>Teléfono <span>*</span></label>
-                    <input type="number" />
+                    <input (change)="change($event.srcElement.value, 'phone')" [value]="object.phone" type="number" />
                 </div>
             </div>
             <div class="inputs-wrapper">
                 <div class="input">
                     <label>Apellido <span>*</span></label>
-                    <input type="text" />
+                    <input (change)="change($event.srcElement.value, 'last')" [value]="object.last" type="text" />
                 </div>
                 <div class="input">
                     <label>Email <span>*</span></label>
-                    <input type="email" />
+                    <input (change)="change($event.srcElement.value, 'email')" [value]="object.email" type="email" />
                 </div>
             </div>
         </div>
@@ -34,12 +34,12 @@
             <div class="inputs-wrapper">
                 <div class="input m-r">
                     <label>Usuario <span>*</span></label>
-                    <input type="text" />
+                    <input (change)="change($event.srcElement.value, 'user')" [value]="object.user" type="text" />
                 </div>
-                <button>Generar contraseña</button>
+                <button (click)="makeid(8)">Generar contraseña</button>
                 <div class="input">
                     <label>Contraseña <span>*</span></label>
-                    <input type="password" />
+                    <input (change)="change($event.srcElement.value, 'pass')" [value]="object.pass" type="password" />
                 </div>
             </div>
         </div>
