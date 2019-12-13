@@ -22,114 +22,41 @@ export class WiziAddComponent implements OnInit {
   GetCar: any;
   GetBrand: any;
   GetModel: any;
+  result: string;
+  object: any;
   constructor(private userService: UserService) {
-
+    this.object = {
+      name: '',
+      last: '',
+      phone: '',
+      email: '',
+      user: '',
+    };
+    this.result = '';
   }
 
+  change(value, name) {
+    this.object[name] = value;
+  }
 
-  GetClientsFunction(){
-    this.userService.GetClients().subscribe( (data: any) => {
-      console.log(data);
-      this.GetClients = data.data.items;
-    })
+  makeid(length) {
+    let result           = '';
+    let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+       this.result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    this.object.pass = this.result;
   }
-  GetClientFunction(id){
-    this.userService.GetClient(id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetClient = data.data.items;
-    })
-  }
-  GetAdminsFunction(){
-    this.userService.GetAdmins().subscribe( (data: any) => {
-      console.log(data);
-      this.GetAdmins = data.data.items;
-    })
-  }
-  GetAdminFunction(id){
-    this.userService.GetAdmin(this.GetAdmins.id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetAdmin = data.data.items;
-    })
-  }
-  GetWizisFunction(){
-    this.userService.GetWizis().subscribe( (data: any) => {
-      console.log(data);
-      this.GetWizis = data.data.items;
-    })
-  }
-  GetWiziFunction(id){
-    this.userService.GetWizi(id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetWizi = data.data.items;
-    })
-  }
-  GetClientServicesFunction(id){
-    this.userService.GetClientServices(id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetClientServices = data.data.items;
-    })
-  }
-  GetWiziServicesFunction(id){
-    this.userService.GetWiziServices(this.GetWizis.id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetWiziServices = data.data.items;
-    })
-  }
-  GetCarFunction(id){
-    this.userService.GetCar(id).subscribe( (data: any) => {
-      console.log(data);
-      this.GetCar = data.data.items;
-    })
-  }
-  GetBrandFunction(brand){
-    this.userService.GetBrand(brand).subscribe( (data: any) => {
-      console.log(data);
-      this.GetBrand = data.data.items;
-    })
-  }
-  GetModelFunction(model){
-    this.userService.GetModel(model).subscribe( (data: any) => {
-      console.log(data);
-      this.GetModel = data.data.items;
-    })
-  }
-  DeleteAdmin(id){
-    this.userService.DeleteAdmin(id).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  DeleteWizi(id){
-    this.userService.DeleteWizi(id).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  DeleteClient(id){
-    this.userService.DeleteClient(id).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  PatchClient(id, body){
-    this.userService.PatchClient(id, body).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  PatchWizi(id, body){
-    this.userService.PatchWizi(id, body).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  PatchAdmin(id, body){
-    this.userService.PatchAdmin(id, body).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  PostAdmin(body){
+
+  PostWizi() {
+    const body = {
+      fullname: this.object.name + ' ' + this.object.last,
+      phone: this.object.phone,
+      email: this.object.email,
+    }
+    console.log(body);
     this.userService.PostAdmin(body).subscribe( (data: any) => {
-      console.log(data);
-    })
-  }
-  PostWizi(body){
-    this.userService.PostWizi(body).subscribe( (data: any) => {
       console.log(data);
     })
   }

@@ -8,28 +8,28 @@
             </div>
             <div class="buttons-wrapper">
                 <button class="black" [routerLink]="['/admin/usuarios']">cancelar</button>
-                <button class="pink">crear cuenta</button>
+                <button class="pink" (click)="PostWizi()">crear cuenta</button>
             </div>
         </div>
         <div class="input-content">
             <div class="inputs-wrapper">
                 <div class="input">
-                    <label>Nombre</label>
-                    <input type="text" />
+                    <label>Nombre <span>*</span></label>
+                    <input (change)="change($event.srcElement.value, 'name')" [value]="object.name" type="text" />
                 </div>
                 <div class="input">
-                    <label>Teléfono</label>
-                    <input type="number" />
+                    <label>Teléfono <span>*</span></label>
+                    <input (change)="change($event.srcElement.value, 'phone')" [value]="object.phone" type="number" />
                 </div>
             </div>
             <div class="inputs-wrapper">
                 <div class="input">
-                    <label>Apellido</label>
-                    <input type="text" />
+                    <label>Apellido <span>*</span></label>
+                    <input (change)="change($event.srcElement.value, 'last')" [value]="object.last" type="text" />
                 </div>
                 <div class="input">
-                    <label>Email</label>
-                    <input type="email" />
+                    <label>Email <span>*</span></label>
+                    <input (change)="change($event.srcElement.value, 'email')" [value]="object.email" type="email" />
                 </div>
             </div>
         </div>
