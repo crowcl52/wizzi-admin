@@ -5,6 +5,8 @@ import { AppState } from 'src/app/app.reducer';
 import { Subscription } from 'rxjs';
 import { CarBrand } from 'src/app/models/cars.model';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { NuevosCarrosDetailComponent } from './nuevos-carros-detail/nuevos-carros-detail.component';
 
 
 @Component({
@@ -19,7 +21,7 @@ export class NuevosCarrosComponent implements OnInit, OnDestroy {
 
   carId = 0;
 
-  constructor( private store: Store<AppState>, private carService: CarsService, private route:Router ) { 
+  constructor( private store: Store<AppState>, private carService: CarsService, private route:Router, public dialog: MatDialog ) { 
     this.carsBrandSubscription = store.select('cars').subscribe(cars=>{
       console.log(cars.carBrand)
       this.cars = cars.carBrand;
@@ -40,6 +42,14 @@ export class NuevosCarrosComponent implements OnInit, OnDestroy {
   goModels(id, name ){
     this.carService.getCarModel(id);
     this.route.navigate(['admin/modelos-carros',id,name]);
+  }
+
+  editBrand(id, name){
+    const dialogRef = this.dialog.open(NuevosCarrosDetailComponent, {
+      width: '500px',
+      height: '500px',
+      data: { id: id, name:name }
+    });
   }
 
 }

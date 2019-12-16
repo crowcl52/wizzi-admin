@@ -6,7 +6,7 @@
     <div class="user-head">
       <h2>Carros</h2>
       <div class="user-buttons">
-        <a (click)="navigate()" *ngIf="nav != 'client'"><i class="fas fa-plus"></i></a>
+        <a (click)="editBrand(0,'',1)" *ngIf="nav != 'client'"><i class="fas fa-plus"></i></a>
         <a><i class="fas fa-bell" [routerLink]="['/admin/notify']"></i></a>
         <div class="number-pink">3</div>
         <div class="input">
@@ -29,7 +29,7 @@
               {{ c.name }}
             </td>
             <td class="point-more">
-              <button mat-button (click)="carId = c.id" [matMenuTriggerFor]="menu"> <i class="fas fa-ellipsis-h"></i> </button>
+              <button mat-button (click)="editBrand(c.id,c.name); $event.stopPropagation()" > <i class="fas fa-ellipsis-h"></i> </button>
             </td>
           </tr>
         </tbody>
@@ -37,10 +37,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- Option Menu -->
-<mat-menu #menu="matMenu">
-  <button mat-menu-item class="txt-pink" (click)="editCar()" > <i class="fas fa-edit"></i> Edit </button>
-  <button mat-menu-item class="txt-pink" ><i class="fas fa-trash-alt"></i> Delete</button>
-</mat-menu>

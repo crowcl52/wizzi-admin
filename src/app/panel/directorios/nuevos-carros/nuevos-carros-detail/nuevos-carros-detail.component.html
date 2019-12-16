@@ -1,1 +1,15 @@
-<p>nuevos-carros-detail works!</p>
+<h3 mat-dialo-title> Marca </h3>
+<div mat-dialog-content class="container-fluid">
+    <div class="row">
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Marca</mat-label>
+            <input [(ngModel)]="data.name" matInput>
+        </mat-form-field>
+    </div>
+
+</div>
+<div class="row" mat-dialog-actions >
+    <button class="btn btn-lg col-auto bg-pink text-white mr-2" (click)="saveBrand()" [disabled]="!(data.name.length > 0)">Guardar</button>
+    <button class="btn btn-lg col-auto bg-danger text-white mr-2" *ngIf="data.id != 0" (click)="onNoClick()">Eliminar</button>
+    <button class="btn btn-lg col-auto bg-dark text-white mr-2" (click)="onNoClick()">Cancelar</button>
+</div>

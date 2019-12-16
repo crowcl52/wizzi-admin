@@ -36,11 +36,11 @@ export class NuevosCarrosModeloComponent implements OnInit,OnDestroy {
     this.carsBrandSubscription.unsubscribe();
   }
 
-  editModel(id, name){
+  editModel(id, name,size){
     const dialogRef = this.dialog.open(NuevosCarrosModeloDetailComponent, {
       width: '500px',
       height: '500px',
-      data: {type: this.BrandId, id: id, name:name}
+      data: {type: this.BrandId, id: id, name:name, size:size}
     });
   }
 

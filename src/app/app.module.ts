@@ -73,7 +73,8 @@ import { NuevosCarrosModeloDetailComponent } from './panel/directorios/nuevos-ca
   ],
   providers: [],
   entryComponents: [
-    NuevosCarrosModeloDetailComponent
+    NuevosCarrosModeloDetailComponent,
+    NuevosCarrosDetailComponent
   ],
   bootstrap: [AppComponent]
 })

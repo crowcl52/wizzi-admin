@@ -39,6 +39,30 @@ export class CarsService {
     });
   }
 
+  public getCarSizes() {
+    const url = `${this.url}carsizes`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+    return this.http.get(url, { headers });
+  }
+
+  public AddCarBrand(data) {
+    const url = `${this.url}/carbrands`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+    return this.http.post(url,data,{ headers });
+  }
+
+  public editCarBrand(id, data) {
+    const url = `${this.url}carmodels/${id}`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+    return this.http.patch(url,data,{ headers });
+  }
+
   public AddCarModel(data) {
     const url = `${this.url}/carmodels`;
     const headers = new HttpHeaders({
@@ -47,12 +71,12 @@ export class CarsService {
     return this.http.post(url,data,{ headers });
   }
 
-  public editCarModel(id, name) {
-    const url = `${this.url}/carmodels/${id}`;
+  public editCarModel(id, data) {
+    const url = `${this.url}carmodels/${id}`;
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.token
     });
-    return this.http.patch(url,{name},{ headers });
+    return this.http.patch(url,data,{ headers });
   }
 
   public getCarCategorized() {

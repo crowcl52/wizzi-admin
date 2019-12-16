@@ -11,11 +11,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class NuevosCarrosModeloDetailComponent implements OnInit {
 
+  size = 1;
+  carSizes = [];
+
   constructor(public dialogRef: MatDialogRef<NuevosCarrosModeloDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data, private service: CarsService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    console.log(this.data)
+    this.service.getCarSizes().subscribe((data: any) => {
+      console.log(data.data)
+      this.carSizes = data.data.items;
+    });
+
+    this.size = this.data.size;
+
   }
 
   onNoClick(): void {
@@ -23,14 +32,18 @@ export class NuevosCarrosModeloDetailComponent implements OnInit {
   }
 
   editModel() {
-    if(this.data.id != 0){
-      this.service.editCarModel(this.data.id, this.data.name).subscribe((cars: any) => {
+    if (this.data.id != 0) {
+      let data = { name: this.data.name, size: this.size }
+
+      this.service.editCarModel(this.data.id, data).subscribe((cars: any) => {
         this._snackBar.open("El carro ha sido Editado con Exito", "Cerrar", {
           duration: 5000,
         });
       });
-    }else{
-      let data = { name: this.data.name, brand: this.data.type}
+
+    } else {
+
+      let data = { name: this.data.name, brand: this.data.type, size: this.size }
 
       this.service.AddCarModel(data).subscribe((cars: any) => {
         this._snackBar.open("El carro ha sido agregado con exito", "Cerrar", {
@@ -39,8 +52,8 @@ export class NuevosCarrosModeloDetailComponent implements OnInit {
       });
 
     }
-    
-  
+
+
   }
 
 }

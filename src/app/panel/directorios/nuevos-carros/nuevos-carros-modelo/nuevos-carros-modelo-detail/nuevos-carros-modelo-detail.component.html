@@ -1,11 +1,22 @@
 <h3 mat-dialo-title> Modelo </h3>
-<div mat-dialog-content>
-    <mat-form-field appearance="outline">
-        <mat-label>Modelo</mat-label>
-        <input [(ngModel)]="data.name" matInput>
-    </mat-form-field>
+<div mat-dialog-content class="container-fluid">
+    <div class="row">
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Modelo</mat-label>
+            <input [(ngModel)]="data.name" matInput>
+        </mat-form-field>
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Tamaño</mat-label>
+            <mat-select [(ngModel)]="size">
+                <mat-option *ngFor="let s of carSizes" [value]="s.id">
+                    {{s.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
 </div>
 <div class="buttons-wrapper" mat-dialog-actions align="end">
-    <button class="black" (click)="onNoClick()" >Cancelar</button>
-    <button class="pink" (click)="editModel()" [disabled]="!(data.name.length > 0)" >Guardar</button>
+    <button class="black" (click)="onNoClick()">Cancelar</button>
+    <button class="pink" (click)="editModel()" [disabled]="!(data.name.length > 0)">Guardar</button>
 </div>
