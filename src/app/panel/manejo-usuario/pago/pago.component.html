@@ -4,7 +4,7 @@
             <label>Email</label>
         </div>
         <div class="user-head">
-            <h2>Usuarios</h2>
+            <h2>Pagos</h2>
             <div class="user-buttons">
                 <a><i class="fas fa-bell"  [routerLink]="['/admin/notify']"></i></a>
                 <div class="number-pink">3</div>
@@ -28,15 +28,11 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>
-                            Nombre
-                            <i class="fas fa-arrow-down"></i>
-                        </th>
-                        <th>Telefono</th>
-                        <th>
-                            Email
-                            <i class="fas fa-arrow-down"></i></th>
-                        <th>Cuenta</th>
+                        <th>Fecha/Hora</th>
+                        <th>Código de Unidad</th>
+                        <th>Tipo</th>
+                        <th>Total Servicio</th>
+                        <th>Estatus</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -49,6 +45,7 @@
                             {{ user.fullname }}
                         </td>
                         <td>{{ user.phone }}</td>
+                        <td>{{ user.email }}</td>
                         <td>{{ user.email }}</td>
                         <td>
                             <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
@@ -83,44 +80,31 @@
             <table *ngIf="nav === 'wiz'">
                 <thead>
                     <tr>
-                        <th class="five"></th>
-                        <th class="twenty">
-                            Nombre
-                            <i class="fas fa-arrow-down"></i>
-                        </th>
-                        <th class="ten">Puntaje</th>
-                        <th class="fifteen">Telefono</th>
-                        <th class="fifteen">
-                            Email
-                            <i class="fas fa-arrow-down"></i>
-                        </th>
-                        <th class="ten">Tipo</th>
-                        <th class="ten">Cuenta</th>
-                        <th class="ten">Estatus</th>
-                        <th class="five"></th>
+                        <th></th>
+                        <th>Fecha/Hora</th>
+                        <th>Código de Unidad</th>
+                        <th>Tipo</th>
+                        <th>Total Servicio</th>
+                        <th>Estatus</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of GetWizis; let i = index">
-                        <td class="five">
+                    <tr *ngFor="let user of GetAdmins; let i = index">
+                        <td>
                             <img src="./../../../../assets/descarga.png" />
                         </td>
-                        <td class="twenty">
-                            {{ user.fullname}}
+                        <td>
+                            {{ user.fullname }}
                         </td>
-                        <td class="ten">{{ user.id }}</td>
-                        <td class="fifteen">{{ user.phone }}</td>
-                        <td class="fifteen">{{ user.email }}m</td>
-                        <td class="ten">Interno</td>
-                        <td class="ten">
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
                             <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
                             <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
                         </td>
-                        <td class="ten">
-                            <button class="active" (click)="active = !active" *ngIf="active">Inactivo</button>
-                            <button class="inactive" (click)="active = !active" *ngIf="!active">Activo</button>
-                        </td>
-                        <td class="five point-more">
+                        <td class="point-more">
                             <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
                                 <button (click)="a = !a">
                               <i class="fas fa-ellipsis-h"></i>
@@ -131,7 +115,7 @@
                                       <i class="fas fa-key"></i>
                                       Deshabilitar
                                   </button>
-                                        <button (click)="editWizi(i); a = false">
+                                        <button (click)="editAdmin(i); a = false">
                                       <i class="fas fa-edit"></i>
                                       Edit
                                   </button>
