@@ -18,26 +18,30 @@ export class UsuariosComponent implements OnInit {
   GetWizi: any;
   aux: any;
   options: boolean;
-  search: boolean;
   GetClientServices: any;
   GetWiziServices: any;
   GetCar: any;
   GetBrand: any;
   GetModel: any;
+  auxAdmin: any;
+  auxWiz: any;
+  auxClient: any;
+  GetPend: any;
   constructor(private userService: UserService, private _router: Router) {
     this.nav = 'admin';
     this.active = true;
-    this.search = false;
     this.aux = -1;
     this.options = false;
     this.GetClientsFunction();
     this.GetAdminsFunction();
     this.GetWizisFunction();
+    this.GetWizisPendient();
   }
   GetClientsFunction() {
     this.userService.GetClients().subscribe( (data: any) => {
       console.log(data);
       this.GetClients = data.data.items;
+      this.auxClient = this.GetClients;
     });
   }
   GetClientFunction(id) {
@@ -50,6 +54,7 @@ export class UsuariosComponent implements OnInit {
     this.userService.GetAdmins().subscribe( (data: any) => {
       console.log(data);
       this.GetAdmins = data.data.items;
+      this.auxAdmin = this.GetAdmins;
     });
   }
   GetAdminFunction(id) {
@@ -62,6 +67,7 @@ export class UsuariosComponent implements OnInit {
     this.userService.GetWizis().subscribe( (data: any) => {
       console.log(data);
       this.GetWizis = data.data.items;
+      this.auxWiz = this.GetWizis;
     });
   }
   GetWiziFunction(id) {
@@ -82,10 +88,10 @@ export class UsuariosComponent implements OnInit {
       this.GetWiziServices = data.data.items;
     });
   }
-  GetCarFunction(id) {
-    this.userService.GetCar(id).subscribe( (data: any) => {
+  GetWizisPendient() {
+    this.userService.GetWizisPendient().subscribe( (data: any) => {
       console.log(data);
-      this.GetCar = data.data.items;
+      this.GetPend = data.data.items.length;
     });
   }
   GetBrandFunction(brand) {
@@ -174,24 +180,48 @@ export class UsuariosComponent implements OnInit {
   }
 
   dishableAdmin(id) {
-
+    this.userService.PatchAdmin(id, {active: 'false'}).subscribe( data => {
+      console.log(data);
+    });
   }
   hableAdmin(id) {
-
+    this.userService.PatchAdmin(id, {active: 'true'}).subscribe( data => {
+      console.log(data);
+    });
   }
   dishableWizi(id) {
-
+    this.userService.PatchWizi(id, {active: 'false'}).subscribe( data => {
+      console.log(data);
+    });
   }
   hableWizi(id) {
-
+    this.userService.PatchWizi(id, {active: 'true'}).subscribe( data => {
+      console.log(data);
+    });
   }
   dishableClient(id) {
-
+    this.userService.PatchClient(id, {active: 'false'}).subscribe( data => {
+      console.log(data);
+    });
   }
   hableClient(id) {
-
+    this.userService.PatchClient(id, {active: 'true'}).subscribe( data => {
+      console.log(data);
+    });
   }
   ngOnInit() {
   }
-
+  search(value) {
+    this.GetAdmins = this.auxAdmin;
+    this.GetWizis = this.auxWiz;
+    this.GetClients = this.auxClient;
+    if (this.nav === 'admin') {
+      this.GetAdmins = this.GetAdmins.filter(word => word.user.fullname.includes(value));
+    }
+    if (this.nav === 'wiz') {
+      this.GetWizis = this.GetWizis.filter(word => word.user.fullname.includes(value));
+    } else {
+      this.GetClients = this.GetClients.filter(word => word.user.fullname.includes(value));
+    }
+  }
 }

@@ -9,7 +9,7 @@
         <div class="buttons">
             <div class="info">
                 <img src="https://www.loginradius.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" />
-                <label>Fernando Cortes Villalobos</label>
+                <label>{{ object.name }}</label>
             </div>
             <div class="buttons-wrapper">
                 <button class="black" [routerLink]="['/admin/usuarios']">regresar</button>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="input">
                     <label>Teléfono</label>
-                    <input (change)="change($event.srcElement.value, 'phone')" [value]="object.phone" type="number" />
+                    <input (change)="change($event.srcElement.value, 'phone')" [value]="object.phone" type="text" />
                 </div>
             </div>
             <div class="inputs-wrapper">
@@ -41,24 +41,16 @@
         <div class="super-admin">
             <h4>Activar o desactivar cuenta</h4>
             <div class="check">
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-              </label>
-                <p *ngIf="true">Inactivo</p>
-                <p *ngIf="false">Activo</p>
+                <mat-slide-toggle class="example-margin" (change)="habledisehable()" [checked]="active">
+                </mat-slide-toggle>
             </div>
         </div>
         <hr>
         <div class="super-admin">
             <h4>Permiso de super admin</h4>
             <div class="check">
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-              </label>
-                <p *ngIf="true">Inactivo</p>
-                <p *ngIf="false">Activo</p>
+                <mat-slide-toggle class="example-margin" (change)="super()" [checked]="role">
+                </mat-slide-toggle>
             </div>
         </div>
     </div>

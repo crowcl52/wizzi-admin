@@ -6,12 +6,12 @@
         <div class="user-head">
             <h2>Usuarios</h2>
             <div class="user-buttons">
-                <a (click)="navigate()" *ngIf="nav != 'client'"><i class="fas fa-plus"></i></a>
+                <a (click)="navigate()" *ngIf="nav == 'admin'"><i class="fas fa-plus"></i></a>
                 <a><i class="fas fa-bell"  [routerLink]="['/admin/notify']"></i></a>
-                <div class="number-pink">3</div>
+                <div class="number-pink">{{ GetPend }}</div>
                 <div class="input">
                     <i class="fas fa-search"></i>
-                    <input type="text" name="search" (click)="search = !search" />
+                    <input type="text" name="search" (keyup)="search($event.srcElement.value)" />
                 </div>
             </div>
         </div>
@@ -49,35 +49,19 @@
                             <img src="./../../../../assets/descarga.png" />
                         </td>
                         <td>
-                            {{ user.fullname }}
+                            {{ user.user.fullname }}
                         </td>
-                        <td>{{ user.phone }}</td>
-                        <td>{{ user.email }}</td>
+                        <td>{{ user.user.phone }}</td>
+                        <td>{{ user.user.email }}</td>
                         <td>
-                            <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
-                            <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
+                            <button class="active" *ngIf="user.active">Habilitada</button>
+                            <button class="inactive" *ngIf="!user.active">Deshabilitada</button>
                         </td>
                         <td class="point-more">
                             <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
-                                <button (click)="a = !a">
+                                <button mat-icon-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{name: user}">
                               <i class="fas fa-ellipsis-h"></i>
                             </button>
-                                <div>
-                                    <div class="more-float" *ngIf="a">
-                                        <button>
-                                            <i class="fas fa-key"></i>
-                                            Deshabilitar
-                                        </button>
-                                        <button (click)="editAdmin(user.id);">
-                                            <i class="fas fa-edit"></i>
-                                            Edit
-                                        </button>
-                                        <button (click)="deleteAdmin(user.id)">
-                                            <i class="fas fa-trash-alt"></i>
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
                             </ng-template>
                         </td>
                     </tr>
@@ -109,41 +93,25 @@
                             <img src="./../../../../assets/descarga.png" />
                         </td>
                         <td class="twenty">
-                            {{ user.fullname}}
+                            {{ user.user.fullname}}
                         </td>
                         <td class="ten">{{ user.id }}</td>
-                        <td class="fifteen">{{ user.phone }}</td>
-                        <td class="fifteen">{{ user.email }}m</td>
-                        <td class="ten">Interno</td>
+                        <td class="fifteen">{{ user.user.phone }}</td>
+                        <td class="fifteen">{{ user.user.email }}m</td>
+                        <td class="ten">{{ user.provider_type }}</td>
                         <td class="ten">
-                            <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
-                            <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
+                            <button class="active" *ngIf="user.active">Habilitada</button>
+                            <button class="inactive" *ngIf="!user.active">Deshabilitada</button>
                         </td>
                         <td class="ten">
-                            <button class="active" (click)="active = !active" *ngIf="active">Inactivo</button>
-                            <button class="inactive" (click)="active = !active" *ngIf="!active">Activo</button>
+                            <button class="inactive" *ngIf="user.inservice">Inactivo</button>
+                            <button class="active" *ngIf="!user.inservice">Activo</button>
                         </td>
                         <td class="five point-more">
                             <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
-                                <button (click)="a = !a">
-                              <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                                <div>
-                                    <div class="more-float" *ngIf="a">
-                                        <button>
-                                      <i class="fas fa-key"></i>
-                                      Deshabilitar
-                                  </button>
-                                        <button (click)="editWizi(user.id)">
-                                      <i class="fas fa-edit"></i>
-                                      Edit
-                                  </button>
-                                        <button (click)="deleteWizi(user.id)">
-                                      <i class="fas fa-trash-alt"></i>
-                                      Delete
-                                  </button>
-                                    </div>
-                                </div>
+                                <button mat-icon-button [matMenuTriggerFor]="appMenu1" [matMenuTriggerData]="{name: user}">
+                                <i class="fas fa-ellipsis-h"></i>
+                              </button>
                             </ng-template>
                         </td>
                     </tr>
@@ -171,35 +139,19 @@
                             <img src="./../../../../assets/descarga.png" />
                         </td>
                         <td>
-                            {{ user.fullname }}
+                            {{ user.user.fullname }}
                         </td>
-                        <td>{{ user.phone }}</td>
-                        <td>{{ user.email }}</td>
+                        <td>{{ user.user.phone }}</td>
+                        <td>{{ user.user.email }}</td>
                         <td>
-                            <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
-                            <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
+                            <button class="active" *ngIf="user.active">Habilitada</button>
+                            <button class="inactive" *ngIf="!user.active">Deshabilitada</button>
                         </td>
                         <td class="point-more">
                             <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
-                                <button (click)="a = !a">
-                              <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                                <div>
-                                    <div class="more-float" *ngIf="a">
-                                        <button (click)="a = false">
-                                      <i class="fas fa-key"></i>
-                                      Deshabilitar
-                                  </button>
-                                        <button (click)="client(user.id)">
-                                <i class="fas fa-edit"></i>
-                                Edit
-                            </button>
-                                        <button (click)="deleteClient(user.id)">
-                                <i class="fas fa-trash-alt"></i>
-                                Delete
-                            </button>
-                                    </div>
-                                </div>
+                                <button mat-icon-button [matMenuTriggerFor]="appMenu2" [matMenuTriggerData]="{name: user}">
+                                <i class="fas fa-ellipsis-h"></i>
+                              </button>
                             </ng-template>
                         </td>
                     </tr>
@@ -208,3 +160,65 @@
         </div>
     </div>
 </div>
+
+<mat-menu #appMenu="matMenu" xPosition="after">
+    <ng-template matMenuContent let-name="name">
+        <button mat-menu-item style="color: #c02278;" *ngIf="name.active" (click)="dishableAdmin(name.id)">
+          <i class="fas fa-key"></i>
+          Deshabilitar
+      </button>
+        <button mat-menu-item style="color: #c02278;" *ngIf="!name.active" (click)="hableAdmin(name.id)">
+          <i class="fas fa-key"></i>
+          Habilitar
+      </button>
+        <button mat-menu-item style="color: #c02278;" (click)="editAdmin(name.id);">
+          <i class="fas fa-edit"></i>
+          Edit
+      </button>
+        <!--<button (click)="deleteAdmin(user.id)">
+          <i class="fas fa-trash-alt"></i>
+          Delete
+      </button>-->
+    </ng-template>
+</mat-menu>
+
+<mat-menu #appMenu1="matMenu" xPosition="after">
+    <ng-template matMenuContent let-name="name">
+        <button mat-menu-item style="color: #c02278;" *ngIf="name.active" (click)="dishableWizi(name.id)">
+          <i class="fas fa-key"></i>
+          Deshabilitar
+      </button>
+        <button mat-menu-item style="color: #c02278;" *ngIf="!name.active" (click)="hableWizi(name.id)">
+          <i class="fas fa-key"></i>
+          Habilitar
+      </button>
+        <button mat-menu-item style="color: #c02278;" (click)="editWizi(name.id);">
+          <i class="fas fa-edit"></i>
+          Edit
+      </button>
+        <!--<button (click)="deleteAdmin(user.id)">
+          <i class="fas fa-trash-alt"></i>
+          Delete
+      </button>-->
+    </ng-template>
+</mat-menu>
+<mat-menu #appMenu2="matMenu" xPosition="after">
+    <ng-template matMenuContent let-name="name">
+        <button mat-menu-item style="color: #c02278;" *ngIf="name.active" (click)="dishableClient(name.id)">
+            <i class="fas fa-key"></i>
+            Deshabilitar
+        </button>
+        <button mat-menu-item style="color: #c02278;" *ngIf="!name.active" (click)="hableClient(name.id)">
+            <i class="fas fa-key"></i>
+            Habilitar
+        </button>
+        <button mat-menu-item style="color: #c02278;" (click)="client(name.id);">
+            <i class="fas fa-edit"></i>
+            Edit
+        </button>
+        <!--<button (click)="deleteAdmin(user.id)">
+            <i class="fas fa-trash-alt"></i>
+            Delete
+        </button>-->
+    </ng-template>
+</mat-menu>

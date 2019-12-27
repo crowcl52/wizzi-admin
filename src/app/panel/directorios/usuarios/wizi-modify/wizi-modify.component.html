@@ -10,8 +10,8 @@
         <div *ngIf="!services" class="buttons">
             <div class="info">
                 <img src="https://www.loginradius.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" />
-                <label>Fernando Cortes Villalobos
-                    <span>Código de Unidad 12345678</span>
+                <label>{{ object.name }}
+                    <span>Código de usuario {{ user }}</span>
                 </label>
             </div>
             <div class="buttons-wrapper">
@@ -23,17 +23,17 @@
             <div class="inputs-wrapper">
                 <div class="input">
                     <label>Editar Nombre</label>
-                    <input (change)="change($event.srcElement.value, 'name')" [value]="object.name" type="text" />
+                    <input (change)="change($event.srcElement.value, 'fullname')" [value]="object.fullname" type="text" />
                 </div>
                 <div class="input">
                     <label>Editar Teléfono</label>
-                    <input (change)="change($event.srcElement.value, 'phone')" [value]="object.phone" type="number" />
+                    <input (change)="change($event.srcElement.value, 'phone')" [value]="object.phone" type="text" />
                 </div>
             </div>
             <div class="inputs-wrapper">
                 <div class="input">
                     <label>Editar Apellido</label>
-                    <input (change)="change($event.srcElement.value, 'last')" [value]="object.last" type="text" />
+                    <input (change)="change($event.srcElement.value, 'fullname')" [value]="object.fullname" type="text" />
                 </div>
                 <div class="input">
                     <label>Editar Email</label>
@@ -46,44 +46,36 @@
             <div class="inputs-wrapper">
                 <div class="input">
                     <label>Fecha de ingreso</label>
-                    <input type="text" />
+                    <input value="{{object.date | date}}" type="text" />
                 </div>
                 <div class="input">
-                    <label>Kilómetros recorridos al corte</label>
-                    <input type="text" />
+                    <label>Nombre</label>
+                    <input (change)="change($event.srcElement.value, 'emergency_contact_fullname')" [value]="object.emergency_contact_fullname" type="text" />
                 </div>
             </div>
             <div class="inputs-wrapper">
                 <div class="input">
-                    <label>Nombre</label>
-                    <input type="text" />
-                </div>
-                <div class="input">
                     <label>Parentesco</label>
-                    <input type="text" />
+                    <input (change)="change($event.srcElement.value, 'emergency_contact_relationship')" [value]="object.emergency_contact_relationship" type="text" />
                 </div>
                 <div class="input">
                     <label>Telefóno</label>
-                    <input type="text" />
+                    <input (change)="change($event.srcElement.value, 'emergency_contact_phone')" [value]="object.emergency_contact_phone" type="text" />
                 </div>
             </div>
         </div>
         <div *ngIf="!services" class="super-admin">
             <h4>Activar o desactivar cuenta</h4>
             <div class="check">
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-              </label>
-                <p *ngIf="true">Inactivo</p>
-                <p *ngIf="false">Activo</p>
+                <mat-slide-toggle class="example-margin" (change)="habledisehable()" [checked]="active">
+                </mat-slide-toggle>
             </div>
         </div>
         <div *ngIf="services" class="buttons">
             <div class="info">
                 <img src="https://www.loginradius.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" />
-                <label>Fernando Cortes Villalobos
-                    <span>Código de Unidad 12345678</span>
+                <label>{{ object.fullname }}
+                    <span>Código de Unidad {{ user }}</span>
                 </label>
             </div>
             <div class="buttons-wrapper">
@@ -95,7 +87,7 @@
                 <tr>
                     <th></th>
                     <th>
-                        Semana
+                        Id
                         <i class="fas fa-arrow-down"></i>
                     </th>
                     <th>Total de Venta</th>

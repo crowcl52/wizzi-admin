@@ -21,7 +21,7 @@
             <div class="inputs-wrapper">
                 <div class="input">
                     <label>Nombre</label>
-                    <input (change)="change($event.srcElement.value, 'name')" [value]="object.name" type="text" />
+                    <input (change)="change($event.srcElement.value, 'fullname')" [value]="object.fullname" type="text" />
                 </div>
                 <div class="input">
                     <label>Teléfono</label>
@@ -31,7 +31,7 @@
             <div class="inputs-wrapper">
                 <div class="input">
                     <label>Apellido</label>
-                    <input (change)="change($event.srcElement.value, 'last')" [value]="object.last" type="text" />
+                    <input (change)="change($event.srcElement.value, 'fullname')" [value]="object.fullname" type="text" />
                 </div>
                 <div class="input">
                     <label>Email</label>
@@ -41,44 +41,40 @@
         </div>
         <h5 *ngIf="!services" class="autos">Autos Favoritos:</h5>
         <div *ngIf="!services" class="input-content">
-            <div class="inputs-wrapper">
+            <div class="inputs-wrapper" *ngFor="let car of cars">
                 <div class="input">
                     <label>Marca</label>
-                    <input type="text" />
+                    <input type="text" [value]="car.brand" />
                 </div>
                 <div class="input">
                     <label>Modelo</label>
-                    <input type="text" />
+                    <input type="text" [value]="car.model" />
                 </div>
                 <div class="input">
                     <label>Color</label>
-                    <input type="text" />
+                    <input type="text" [value]="car.color" />
                 </div>
             </div>
-            <div class="inputs-wrapper">
+            <!--<div class="inputs-wrapper">
                 <div class="input">
                     <label>Marca</label>
-                    <input type="text" />
+                    <input type="text" [value]="car.brand" />
                 </div>
                 <div class="input">
                     <label>Modelo</label>
-                    <input type="text" />
+                    <input type="text" [value]="car.model" />
                 </div>
                 <div class="input">
                     <label>Color</label>
-                    <input type="text" />
+                    <input type="text" [value]="car.color" />
                 </div>
-            </div>
+            </div>-->
         </div>
         <div *ngIf="!services" class="super-admin">
             <h4>Activar o desactivar cuenta</h4>
             <div class="check">
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-              </label>
-                <p *ngIf="true">Inactivo</p>
-                <p *ngIf="false">Activo</p>
+                <mat-slide-toggle class="example-margin" (change)="habledisehable()" [checked]="active">
+                </mat-slide-toggle>
             </div>
         </div>
         <div *ngIf="services" class="buttons">
@@ -93,7 +89,6 @@
         <table *ngIf="services">
             <thead>
                 <tr>
-                    <th></th>
                     <th>
                         Fecha
                     </th>
@@ -107,19 +102,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of GetAdmins; let i = index">
+                <tr *ngFor="let service of servicesData; let i = index" style="height: 64px;">
                     <td>
-                        <img src="./../../../../assets/descarga.png" />
+                        {{ service.updated_at | date }}
                     </td>
+                    <td>{{ service.id }}</td>
+                    <td>{{ service.service_type_name }}</td>
+                    <td>{{ service.total_cost }}</td>
                     <td>
-                        {{ user.fullname }}
-                    </td>
-                    <td>{{ user.phone }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>
-                        <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
-                        <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
+                        {{ service.service_type_name }}
                     </td>
                 </tr>
             </tbody>

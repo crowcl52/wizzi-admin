@@ -26,6 +26,7 @@ export class WiziModifyComponent implements OnInit {
   GetModel: any;
   object: any;
   id: number;
+  user: any;
   constructor(private route: ActivatedRoute, private userService: UserService) {
     this.services = false;
     this.active = true;
@@ -33,11 +34,17 @@ export class WiziModifyComponent implements OnInit {
     console.log(this.id);
     this.userService.GetWizi(this.id).subscribe( data => {
       console.log(data);
+      this.active = data['data']['items']['0']['active'];
+      this.user = data['data']['items']['0']['user']['id'];
       this.object = {
-        name: data['data']['items']['0']['fullname'],
-        last: data['data']['items']['0']['fullname'],
-        phone: data['data']['items']['0']['phone'],
-        email: data['data']['items']['0']['email'],
+        fullname: data['data']['items']['0']['user']['fullname'],
+        phone: data['data']['items']['0']['user']['phone'].substring(1, data['data']['items']['0']['user']['phone'].lenght),
+        email: data['data']['items']['0']['user']['email'],
+        date: data['data']['items']['0']['user']['created_at'],
+        emergency_contact_fullname: data['data']['items']['0']['user']['emergency_contact_fullname'],
+        emergency_contact_relationship: data['data']['items']['0']['user']['emergency_contact_relationship'],
+        emergency_contact_phone: data['data']['items']['0']['user']['emergency_contact_phone'],
+        image: data['data']['items']['0']['user']['image_source'],
       };
       console.log(this.object);
     });
@@ -48,19 +55,21 @@ export class WiziModifyComponent implements OnInit {
   }
 
 
-  PatchUser(){
-    const body = {
-      fullname: this.object.name + ' ' + this.object.last,
-      phone: this.object.phone,
-      email: this.object.email,
-    }
-    console.log(body);
-    this.userService.PatchUser(this.id, body).subscribe( (data: any) => {
+  PatchUser() {
+    console.log(this.object);
+    this.userService.PatchUser(this.user, this.object).subscribe( (data: any) => {
       console.log(data);
-    })
+    });
   }
 
   ngOnInit() {
   }
 
+  habledisehable() {
+    this.active = !this.active;
+    console.log(this.active);
+    this.userService.PatchWizi(this.id, {active: this.active.toString()}).subscribe( data => {
+      console.log(data);
+    });
+  }
 }

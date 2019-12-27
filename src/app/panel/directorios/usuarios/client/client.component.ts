@@ -26,18 +26,30 @@ export class ClientComponent implements OnInit {
   GetModel: any;
   id: number;
   object: any;
+  cars: any;
+  car: { model: string; brand: string; color: string; };
+  user: any;
+  servicesData: any;
   constructor(private route: ActivatedRoute, private userService: UserService) {
     this.services = false;
     this.active = true;
     this.id = +this.route.snapshot.paramMap.get('id');
     console.log(this.id);
-    this.userService.GetWizi(this.id).subscribe( data => {
+    this.userService.GetClient(this.id).subscribe( data => {
       console.log(data);
+      this.user = data['data']['items']['0']['user']['id'];
+      this.active = data['data']['items']['0']['active'];
+      this.cars = data['data']['items']['0']['cars'];
+      this.servicesData = data['data']['items']['0']['services'];
+      this.car = {
+        model: '',
+        brand: '',
+        color: '',
+      };
       this.object = {
-        name: data['data']['items']['0']['fullname'],
-        last: data['data']['items']['0']['fullname'],
-        phone: data['data']['items']['0']['phone'],
-        email: data['data']['items']['0']['email'],
+        fullname: data['data']['items']['0']['user']['fullname'],
+        phone: data['data']['items']['0']['user']['phone'].substring(1, data['data']['items']['0']['user']['phone'].lenght),
+        email: data['data']['items']['0']['user']['email'],
       };
       console.log(this.object);
     });
@@ -51,15 +63,16 @@ export class ClientComponent implements OnInit {
   }
 
 
-  PatchUser(){
-    const body = {
-      fullname: this.object.name + ' ' + this.object.last,
-      phone: this.object.phone,
-      email: this.object.email,
-    }
-    console.log(body);
-    this.userService.PatchUser(this.id, body).subscribe( (data: any) => {
+  PatchUser() {
+    this.userService.PatchUser(this.user, this.object).subscribe( (data: any) => {
       console.log(data);
     })
+  }
+  habledisehable() {
+    this.active = !this.active;
+    console.log(this.active);
+    this.userService.PatchClient(this.id, {active: this.active.toString()}).subscribe( data => {
+      console.log(data);
+    });
   }
 }

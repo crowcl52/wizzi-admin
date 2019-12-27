@@ -6,8 +6,7 @@
                 <div class="inputs-wrapper">
                     <div class="input">
                         <label>Email</label>
-                        <i [ngClass]="{'none': search}" style="margin: 40px 8px; position: absolute;"
-                            class="fas fa-search"></i>
+                        <i [ngClass]="{'none': search}" style="margin: 40px 8px; position: absolute;" class="fas fa-search"></i>
                         <input type="email" (click)="search = !search" />
                     </div>
                 </div>
@@ -19,15 +18,14 @@
         </div>
         <div [hidden]="services" class="buttons" *ngFor="let user of GetAdmins; let i = index">
             <div class="info">
-                <img
-                    src="https://www.loginradius.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" />
-                <label>Fernando Cortes Villalobos
-                    <span>12/03/19 20:04</span>
+                <img src="https://www.loginradius.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" />
+                <label>{{user.user.fullname}}
+                    <span>{{ user.updated_at | date}}</span>
                 </label>
             </div>
             <div class="buttons-wrapper">
-                <button class="black" [routerLink]="['/admin/usuarios']">regresar</button>
-                <button class="pink">guardar</button>
+                <button class="black" (click)="reject(user.id)">Rechazar</button>
+                <button class="pink" (click)="accept(user.id)">Aceptar</button>
             </div>
         </div>
         <table *ngIf="services">
@@ -46,19 +44,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of GetAdmins; let i = index">
+                <tr *ngFor="let user of Getwizi; let i = index">
                     <td>
                         <img src="./../../../../assets/descarga.png" />
                     </td>
                     <td>
-                        {{ user.fullname }}
+                        {{ user.user.fullname }}
                     </td>
-                    <td>12/03/19 20:04</td>
-                    <td>{{ user.phone }}</td>
-                    <td>{{ user.email }}</td>
+                    <td>{{ user.updated_at | date }}</td>
+                    <td>{{ user.user.phone }}</td>
+                    <td>{{ user.user.email }}</td>
                     <td>
-                        <button class="active" (click)="active = !active" *ngIf="active">Aceptada</button>
-                        <button class="inactive" (click)="active = !active" *ngIf="!active">Rechazada</button>
+                        <button class="active" *ngIf="user.approve">Aceptada</button>
+                        <button class="inactive" *ngIf="!user.approve">Rechazada</button>
                     </td>
                 </tr>
             </tbody>

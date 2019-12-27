@@ -43,7 +43,8 @@ export class AdminAddComponent implements OnInit {
   }
 
   makeid(length) {
-    let result           = '';
+    this.object.pass = '';
+    this.result = '';
     let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let charactersLength = characters.length;
     for ( let i = 0; i < length; i++ ) {
@@ -52,7 +53,7 @@ export class AdminAddComponent implements OnInit {
     this.object.pass = this.result;
   }
 
-  PostAdmin(){
+  PostAdmin() {
     const body = {
       fullname: this.object.name + ' ' + this.object.last,
       phone: this.object.phone,
