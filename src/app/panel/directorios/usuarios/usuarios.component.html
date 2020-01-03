@@ -30,6 +30,7 @@
             <table *ngIf="nav === 'admin'">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th></th>
                         <th>
                             Nombre
@@ -45,6 +46,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of GetAdmins; let i = index">
+                        <td>{{user.id}}</td>
                         <td>
                             <img src="./../../../../assets/descarga.png" />
                         </td>
@@ -70,18 +72,17 @@
             <table *ngIf="nav === 'wiz'">
                 <thead>
                     <tr>
+                        <th class="five">Id</th>
                         <th class="five"></th>
-                        <th class="twenty">
+                        <th class="fifteen">
                             Nombre
                             <i class="fas fa-arrow-down"></i>
                         </th>
-                        <th class="ten">Puntaje</th>
                         <th class="fifteen">Telefono</th>
                         <th class="fifteen">
                             Email
                             <i class="fas fa-arrow-down"></i>
                         </th>
-                        <th class="ten">Tipo</th>
                         <th class="ten">Cuenta</th>
                         <th class="ten">Estatus</th>
                         <th class="five"></th>
@@ -89,16 +90,15 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of GetWizis; let i = index">
+                        <td class="five">{{user.user.id}}</td>
                         <td class="five">
                             <img src="./../../../../assets/descarga.png" />
                         </td>
-                        <td class="twenty">
+                        <td class="fifteen">
                             {{ user.user.fullname}}
                         </td>
-                        <td class="ten">{{ user.id }}</td>
                         <td class="fifteen">{{ user.user.phone }}</td>
                         <td class="fifteen">{{ user.user.email }}m</td>
-                        <td class="ten">{{ user.provider_type }}</td>
                         <td class="ten">
                             <button class="active" *ngIf="user.active">Habilitada</button>
                             <button class="inactive" *ngIf="!user.active">Deshabilitada</button>
@@ -120,11 +120,13 @@
             <table *ngIf="nav === 'client'">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th></th>
                         <th>
                             Nombre
                             <i class="fas fa-arrow-down"></i>
                         </th>
+                        <th>Fecha de alta</th>
                         <th>Telefono</th>
                         <th>
                             Email
@@ -135,12 +137,14 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of GetClients; let i = index">
+                        <td>{{ user.user.id }}</td>
                         <td>
                             <img src="./../../../../assets/descarga.png" />
                         </td>
                         <td>
                             {{ user.user.fullname }}
                         </td>
+                        <td>{{ user.user.created_at | date }}</td>
                         <td>{{ user.user.phone }}</td>
                         <td>{{ user.user.email }}</td>
                         <td>

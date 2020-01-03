@@ -180,33 +180,45 @@ export class UsuariosComponent implements OnInit {
   }
 
   dishableAdmin(id) {
-    this.userService.PatchAdmin(id, {active: 'false'}).subscribe( data => {
+    this.userService.PatchAdmin(id, {active: 'false'}).subscribe((data: any) => {
       console.log(data);
+      this.GetAdmins = data.data.items;
+      this.auxAdmin = this.GetAdmins;
     });
   }
   hableAdmin(id) {
-    this.userService.PatchAdmin(id, {active: 'true'}).subscribe( data => {
+    this.userService.PatchAdmin(id, {active: 'true'}).subscribe((data: any) => {
       console.log(data);
+      this.GetAdmins = data.data.items;
+      this.auxAdmin = this.GetAdmins;
     });
   }
   dishableWizi(id) {
-    this.userService.PatchWizi(id, {active: 'false'}).subscribe( data => {
+    this.userService.PatchWizi(id, {active: 'false'}).subscribe((data: any) => {
       console.log(data);
+      this.GetWizis = data.data.items;
+      this.auxWiz = this.GetWizis;
     });
   }
   hableWizi(id) {
-    this.userService.PatchWizi(id, {active: 'true'}).subscribe( data => {
+    this.userService.PatchWizi(id, {active: 'true'}).subscribe((data: any) => {
       console.log(data);
+      this.GetWizis = data.data.items;
+      this.auxWiz = this.GetWizis;
     });
   }
   dishableClient(id) {
-    this.userService.PatchClient(id, {active: 'false'}).subscribe( data => {
+    this.userService.PatchClient(id, {active: 'false'}).subscribe((data: any) => {
       console.log(data);
+      this.GetClients = data.data.items;
+      this.auxClient = this.GetClients;
     });
   }
   hableClient(id) {
-    this.userService.PatchClient(id, {active: 'true'}).subscribe( data => {
+    this.userService.PatchClient(id, {active: 'true'}).subscribe((data: any) => {
       console.log(data);
+      this.GetClients = data.data.items;
+      this.auxClient = this.GetClients;
     });
   }
   ngOnInit() {

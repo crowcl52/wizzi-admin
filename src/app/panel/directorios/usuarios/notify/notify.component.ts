@@ -30,11 +30,27 @@ export class NotifyComponent implements OnInit {
   reject(id) {
     this.userService.PatchWizi(id, {approve: 'false'}).subscribe( data => {
       console.log(data);
+      this.userService.GetWizis().subscribe( (data: any) => {
+        console.log(data);
+        this.Getwizi = data.data.items;
+      });
+      this.userService.GetWizisPendient().subscribe( (data: any) => {
+        console.log(data);
+        this.GetAdmins = data.data.items;
+      });
     });
   }
   accept(id) {
     this.userService.PatchWizi(id, {approve: 'true'}).subscribe( data => {
       console.log(data);
+      this.userService.GetWizis().subscribe( (data: any) => {
+        console.log(data);
+        this.Getwizi = data.data.items;
+      });
+      this.userService.GetWizisPendient().subscribe( (data: any) => {
+        console.log(data);
+        this.GetAdmins = data.data.items;
+      });
     });
   }
 }
