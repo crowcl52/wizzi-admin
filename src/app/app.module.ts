@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 
 import { DemoMaterialModule } from './material-module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -65,6 +65,7 @@ import { NuevosCarrosModeloDetailComponent } from './panel/directorios/nuevos-ca
     HttpClientModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
+    ChartsModule,
     StoreModule.forRoot( appReducer ),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

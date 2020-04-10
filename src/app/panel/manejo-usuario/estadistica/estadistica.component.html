@@ -1,3 +1,55 @@
-<p>
-  estadistica works!
-</p>
+<section class="container mt-5">
+  <h2>Estadisticas</h2>
+
+  <h4 class="mt-3" >Ventas Anuales</h4>
+  <mat-divider></mat-divider>
+  <div>
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="mt-3" >Cancelaciones</h4>
+  <mat-divider></mat-divider>
+  <div>
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="mt-3" >Usuarios</h4>
+  <mat-divider></mat-divider>
+  <div>
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+</section>
