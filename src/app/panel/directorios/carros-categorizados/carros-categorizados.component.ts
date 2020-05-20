@@ -8,10 +8,18 @@ import { CarsService } from '../../services/cars.service';
 })
 export class CarrosCategorizadosComponent implements OnInit {
 
+  nav = "";
+  search = false;
+  carId = 0;
+
   constructor(private service: CarsService) { }
 
   ngOnInit() {
     this.service.getCarCategorized();
+  }
+
+  editCar(){
+    console.log("edit car")
   }
 
 }

@@ -6,12 +6,12 @@
       <div class="user-head">
         <h2 [routerLink]="['/admin/nuevos-carros']" class="cursor" >Carros / {{BrandName}} </h2>
         <div class="user-buttons">
-          <a (click)="editModel(0,'',1)" *ngIf="nav != 'client'"><i class="fas fa-plus"></i></a>
+          <a (click)="editModel(0,'',1)" ><i class="fas fa-plus"></i></a>
           <a><i class="fas fa-bell" [routerLink]="['/admin/notify']"></i></a>
           <div class="number-pink">3</div>
           <div class="input">
             <i class="fas fa-search"></i>
-            <input type="text" name="search" (click)="search = !search" />
+            <input type="text" name="search"  />
           </div>
         </div>
       </div>

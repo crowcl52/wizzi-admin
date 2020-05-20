@@ -48,7 +48,7 @@
                     <tr *ngFor="let user of GetAdmins; let i = index">
                         <td>{{user.id}}</td>
                         <td>
-                            <img src="./../../../../assets/descarga.png" />
+                            <img [src]="user.user.image_source" />
                         </td>
                         <td>
                             {{ user.user.fullname }}

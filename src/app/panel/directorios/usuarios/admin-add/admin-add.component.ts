@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-admin-add',
@@ -63,6 +65,7 @@ export class AdminAddComponent implements OnInit {
     console.log(body);
     this.userService.PostAdmin(body).subscribe( (data: any) => {
       console.log(data);
+      Swal.fire('Felicidades', 'Ha creado un nuevo administrador', 'success')
     })
   }
 }

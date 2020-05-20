@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ServiciosComponent implements OnInit {
 
   nav = 'admin';
+  search = false;
 
   constructor() { }
 

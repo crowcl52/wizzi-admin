@@ -17,7 +17,7 @@ export class UsuariosService {
   }
 
   public updateUser(data, id) {
-    const url = `${this.url}/users/${id}`;
+    const url = `${this.url}users/${id}`;
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.token
     });
@@ -26,6 +26,46 @@ export class UsuariosService {
       console.log(data)
     })
 
+  }
+
+  public getClientChar(i, f) {
+
+    const url = `${this.url}statistics/clients/accounts/new?start_at=${i}&end_at=${f}`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+
+    return this.http.get(url, { headers })
+  }
+
+  public getprovidersChar(i, f) {
+
+    const url = `${this.url}statistics/providers/accounts/new?start_at=${i}&end_at=${f}`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+
+    return this.http.get(url, { headers })
+  }
+
+  public getCarsChar(i, f) {
+
+    const url = `${this.url}statistics/services/cars?start_at=${i}&end_at=${f}`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+
+    return this.http.get(url, { headers })
+  }
+
+  public getServicesChar(i, f) {
+
+    const url = `${this.url}statistics/services/types?start_at=${i}&end_at=${f}`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+
+    return this.http.get(url, { headers })
   }
 
 }
