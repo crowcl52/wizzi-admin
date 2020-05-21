@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-servicios',
@@ -10,9 +11,16 @@ export class ServiciosComponent implements OnInit {
   nav = 'admin';
   search = false;
 
-  constructor() { }
+  services = [];
+
+  constructor( private service: UsuariosService ) { }
 
   ngOnInit() {
+
+    this.service.getPagos().subscribe( ( d: any ) =>{
+      console.log(d.data.items)
+      this.services = d.data.items;
+    } )
   }
 
 }

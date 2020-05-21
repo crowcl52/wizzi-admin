@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import { AuthService } from '../../auth/auth.service';
+import Swal from 'sweetalert2';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,7 @@ export class UsuariosService {
 
     this.http.patch(url, data, { headers }).subscribe(data => {
       console.log(data)
+      Swal.fire('Bien!', 'Perfil modificado con éxito', 'success')
     })
 
   }
@@ -68,4 +71,21 @@ export class UsuariosService {
     return this.http.get(url, { headers })
   }
 
+  public getServices(){
+    const url = `${this.url}servicetypes`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+
+    return this.http.get(url, { headers });
+  }
+
+  public getPagos(){
+    const url = `${this.url}servicecosts`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+
+    return this.http.get(url, { headers });
+  }
 }

@@ -27,7 +27,7 @@
         <mat-icon class="text-white mr-2">chat_bubble</mat-icon> Pagos
       </a>
 
-      <a class="col-12 d-line mt-4" [routerLink]="[ '/admin/carros' ]" routerLinkActive="active-link">
+      <a class="col-12 d-line mt-4" (click)="logout()" [routerLink]="[ '/' ]" >
         <mat-icon class="text-white mr-2">exit_to_app</mat-icon> Logout
       </a>
     </div>

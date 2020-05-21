@@ -3,6 +3,7 @@ import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Label } from 'ng2-charts';
 import { UsuariosService } from '../../services/usuarios.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-estadistica',
@@ -14,6 +15,9 @@ export class EstadisticaComponent implements OnInit {
   dateInit = 0;
   dateEnd = 0;
   blockSend = true;
+
+  initDay =  new FormControl(new Date("01/01/2020"));
+  today = new FormControl(new Date());
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -55,6 +59,7 @@ export class EstadisticaComponent implements OnInit {
   constructor(private userService: UsuariosService) { }
 
   ngOnInit() {
+    this.searchDate();
   }
 
   // events

@@ -4,13 +4,13 @@
             <label>Email</label>
         </div>
         <div class="user-head">
-            <h2>Pagos</h2>
+            <h2>Servicios </h2>
             <div class="user-buttons">
-                <a><i class="fas fa-bell"  [routerLink]="['/admin/notify']"></i></a>
+                <a><i class="fas fa-bell" [routerLink]="['/admin/notify']"></i></a>
                 <div class="number-pink">3</div>
                 <div class="input">
                     <i class="fas fa-search"></i>
-                    <input type="text" name="search"  />
+                    <input type="text" name="search" (click)="search = !search" />
                 </div>
             </div>
         </div>
@@ -21,58 +21,27 @@
             <div class="nav-title" [ngClass]="{selected: nav === 'wiz'}" (click)="nav = 'wiz'">
                 <h3>Historial</h3>
             </div>
-     
+
         </div>
         <div class="user-tables">
             <table *ngIf="nav === 'admin'">
                 <thead>
                     <tr>
-                        <th></th>
                         <th>Fecha/Hora</th>
                         <th>Código de Unidad</th>
                         <th>Tipo</th>
                         <th>Total Servicio</th>
                         <th>Estatus</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of GetAdmins; let i = index">
+                    <tr *ngFor="let user of services; let i = index">
+                        <td class="py-3">{{ user.created_at | date: 'short' }}</td>
+                        <td>{{ user.car_size.id }}</td>
+                        <td>{{ user.car_size.name }}</td>
+                        <td>{{ user.cost }}</td>
                         <td>
-                            <img src="./../../../../assets/descarga.png" />
-                        </td>
-                        <td>
-                            {{ user.fullname }}
-                        </td>
-                        <td>{{ user.phone }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>
-                            <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
-                            <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
-                        </td>
-                        <td class="point-more">
-                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
-                                <button (click)="a = !a">
-                              <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                                <div>
-                                    <div class="more-float" *ngIf="a">
-                                        <button (click)="a = false">
-                                      <i class="fas fa-key"></i>
-                                      Deshabilitar
-                                  </button>
-                                        <button (click)="editAdmin(i); a = false">
-                                      <i class="fas fa-edit"></i>
-                                      Edit
-                                  </button>
-                                        <button (click)="a = false">
-                                      <i class="fas fa-trash-alt"></i>
-                                      Delete
-                                  </button>
-                                    </div>
-                                </div>
-                            </ng-template>
+                            <button class="active">status</button>
                         </td>
                     </tr>
                 </tbody>
@@ -80,52 +49,21 @@
             <table *ngIf="nav === 'wiz'">
                 <thead>
                     <tr>
-                        <th></th>
                         <th>Fecha/Hora</th>
                         <th>Código de Unidad</th>
                         <th>Tipo</th>
                         <th>Total Servicio</th>
                         <th>Estatus</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of GetAdmins; let i = index">
+                    <tr *ngFor="let user of services; let i = index">
+                        <td class="py-3">{{ user.created_at | date: 'short' }}</td>
+                        <td>{{ user.car_size.id }}</td>
+                        <td>{{ user.car_size.name }}</td>
+                        <td>{{ user.cost }}</td>
                         <td>
-                            <img src="./../../../../assets/descarga.png" />
-                        </td>
-                        <td>
-                            {{ user.fullname }}
-                        </td>
-                        <td>{{ user.phone }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>
-                            <button class="active" (click)="active = !active" *ngIf="active">Habilitada</button>
-                            <button class="inactive" (click)="active = !active" *ngIf="!active">Deshabilitada</button>
-                        </td>
-                        <td class="point-more">
-                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
-                                <button (click)="a = !a">
-                              <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                                <div>
-                                    <div class="more-float" *ngIf="a">
-                                        <button (click)="a = false">
-                                      <i class="fas fa-key"></i>
-                                      Deshabilitar
-                                  </button>
-                                        <button (click)="editAdmin(i); a = false">
-                                      <i class="fas fa-edit"></i>
-                                      Edit
-                                  </button>
-                                        <button (click)="a = false">
-                                      <i class="fas fa-trash-alt"></i>
-                                      Delete
-                                  </button>
-                                    </div>
-                                </div>
-                            </ng-template>
+                            <button class="active">status</button>
                         </td>
                     </tr>
                 </tbody>

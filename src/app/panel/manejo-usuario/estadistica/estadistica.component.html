@@ -3,15 +3,15 @@
 
   <div class="row">
     <div class="col-12">
-      <p class="text-secondary" > Selecciona una fecha de inicio y una defianl </p>
+      <p class="text-secondary" > Selecciona una fecha de inicio y una de fin </p>
     </div>
     <mat-form-field class="col-5" >
-      <input disabled matInput (dateChange)="gatedate($event.value,1)" [matDatepicker]="picker" placeholder="Inicio">
+      <input disabled matInput (dateChange)="gatedate($event.value,1)" [matDatepicker]="picker" [formControl]="initDay" placeholder="Inicio" >
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker disabled="false" #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field class="col-5" >
-      <input disabled matInput (dateChange)="gatedate($event.value,2)" [matDatepicker]="picker2" placeholder="Fin">
+      <input disabled matInput (dateChange)="gatedate($event.value,2)" [matDatepicker]="picker2" [formControl]="today" placeholder="Fin" >
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker disabled="false" #picker2></mat-datepicker>
     </mat-form-field>

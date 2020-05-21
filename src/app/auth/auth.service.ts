@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ActivateUserAction, DeactivateUserAction } from '../redux/user.actions';
+import Swal from 'sweetalert2';
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,17 @@ export class AuthService {
       this.Token = data.data.items[0].token;
       this.store.dispatch(new ActivateUserAction({ ...data.data.items[0] }));
       this.route.navigate(['admin']);
+    },err =>{
+      console.log(err.error.error)
+      let error = err.error.error.generalDetails.message;
+      let msgerr =  err.error.error.generalDetails.message;
+
+      if(error == "invalidSignin"){
+       msgerr = "El usuario o la contraseña son incorrectos";
+      }
+
+      Swal.fire('Ha ocurrido un error', msgerr, 'error')
+
     });
   }
 
@@ -45,6 +58,7 @@ export class AuthService {
   logout() {
     this.loginSubscription.unsubscribe();
     this.store.dispatch(new DeactivateUserAction());
+    location.reload();
   }
 
 }

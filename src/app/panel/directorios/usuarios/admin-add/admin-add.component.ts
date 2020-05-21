@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,7 +27,9 @@ export class AdminAddComponent implements OnInit {
   GetModel: any;
   result: any;
   object: any;
-  constructor(private userService: UserService) {
+
+  constructor(private userService: UserService, private router: Router) {
+
     this.object = {
       name: '',
       last: '',
@@ -66,6 +69,7 @@ export class AdminAddComponent implements OnInit {
     this.userService.PostAdmin(body).subscribe( (data: any) => {
       console.log(data);
       Swal.fire('Felicidades', 'Ha creado un nuevo administrador', 'success')
+      this.router.navigate(['/admin'])
     })
   }
 }

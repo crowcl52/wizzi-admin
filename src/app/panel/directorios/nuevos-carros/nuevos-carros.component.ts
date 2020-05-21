@@ -7,6 +7,7 @@ import { CarBrand } from 'src/app/models/cars.model';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NuevosCarrosDetailComponent } from './nuevos-carros-detail/nuevos-carros-detail.component';
+import { UserService } from '../usuarios/user.service';
 
 
 @Component({
@@ -21,7 +22,10 @@ export class NuevosCarrosComponent implements OnInit, OnDestroy {
 
   carId = 0;
 
-  constructor( private store: Store<AppState>, private carService: CarsService, private route:Router, public dialog: MatDialog ) { 
+
+  alert = 0; 
+
+  constructor( private store: Store<AppState>, private carService: CarsService, private route:Router, public dialog: MatDialog , private userService: UserService ) { 
     this.carsBrandSubscription = store.select('cars').subscribe(cars=>{
       console.log(cars.carBrand)
       this.cars = cars.carBrand;
@@ -29,10 +33,17 @@ export class NuevosCarrosComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.GetWizisPendient();
   }
 
   ngOnDestroy(){
     this.carsBrandSubscription.unsubscribe();
+  }
+
+  GetWizisPendient() {
+    this.userService.GetWizisPendient().subscribe( (data: any) => {
+      this.alert = data.data.items.length;
+    });
   }
 
   editCar(){

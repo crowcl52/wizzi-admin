@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-notify',
@@ -25,11 +26,12 @@ export class NotifyComponent implements OnInit {
       this.Getwizi = data.data.items;
     });
   }
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
   reject(id) {
     this.userService.PatchWizi(id, {approve: 'false'}).subscribe( data => {
       console.log(data);
+      Swal.fire('Bien!', 'Usuario Rechazado', 'success');
       this.userService.GetWizis().subscribe( (data: any) => {
         console.log(data);
         this.Getwizi = data.data.items;
@@ -43,6 +45,7 @@ export class NotifyComponent implements OnInit {
   accept(id) {
     this.userService.PatchWizi(id, {approve: 'true'}).subscribe( data => {
       console.log(data);
+      Swal.fire('Bien!', 'Usuario Rechazado', 'success');
       this.userService.GetWizis().subscribe( (data: any) => {
         console.log(data);
         this.Getwizi = data.data.items;

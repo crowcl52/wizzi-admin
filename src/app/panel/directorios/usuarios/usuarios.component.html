@@ -32,14 +32,9 @@
                     <tr>
                         <th>Id</th>
                         <th></th>
-                        <th>
-                            Nombre
-                            <i class="fas fa-arrow-down"></i>
-                        </th>
+                        <th>Nombre</th>
                         <th>Telefono</th>
-                        <th>
-                            Email
-                            <i class="fas fa-arrow-down"></i></th>
+                        <th>Email</th>
                         <th>Cuenta</th>
                         <th></th>
                     </tr>
@@ -48,7 +43,7 @@
                     <tr *ngFor="let user of GetAdmins; let i = index">
                         <td>{{user.id}}</td>
                         <td>
-                            <img [src]="user.user.image_source" />
+                            <img [src]="user.user.image_source || './../../../../assets/descarga.png' " />
                         </td>
                         <td>
                             {{ user.user.fullname }}
@@ -74,15 +69,9 @@
                     <tr>
                         <th class="five">Id</th>
                         <th class="five"></th>
-                        <th class="fifteen">
-                            Nombre
-                            <i class="fas fa-arrow-down"></i>
-                        </th>
+                        <th class="fifteen"> Nombre </th>
                         <th class="fifteen">Telefono</th>
-                        <th class="fifteen">
-                            Email
-                            <i class="fas fa-arrow-down"></i>
-                        </th>
+                        <th class="fifteen">Email</th>
                         <th class="ten">Cuenta</th>
                         <th class="ten">Estatus</th>
                         <th class="five"></th>
@@ -122,15 +111,10 @@
                     <tr>
                         <th>Id</th>
                         <th></th>
-                        <th>
-                            Nombre
-                            <i class="fas fa-arrow-down"></i>
-                        </th>
+                        <th> Nombre</th>
                         <th>Fecha de alta</th>
                         <th>Telefono</th>
-                        <th>
-                            Email
-                            <i class="fas fa-arrow-down"></i></th>
+                        <th>Email</th>
                         <th>Cuenta</th>
                         <th></th>
                     </tr>
@@ -185,7 +169,6 @@
       </button>-->
     </ng-template>
 </mat-menu>
-
 <mat-menu #appMenu1="matMenu" xPosition="after">
     <ng-template matMenuContent let-name="name">
         <button mat-menu-item style="color: #c02278;" *ngIf="name.active" (click)="dishableWizi(name.id)">

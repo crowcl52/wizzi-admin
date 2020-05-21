@@ -22,7 +22,7 @@ import { PanelComponent } from './panel/panel.component';
 import { PerfilComponent } from './panel/manejo-usuario/perfil/perfil.component';
 import { EstadisticaComponent } from './panel/manejo-usuario/estadistica/estadistica.component';
 import { PagoComponent } from './panel/manejo-usuario/pago/pago.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminAddComponent } from './panel/directorios/usuarios/admin-add/admin-add.component';
 import { AdminModifyComponent } from './panel/directorios/usuarios/admin-modify/admin-modify.component';
@@ -62,6 +62,7 @@ import { NuevosCarrosModeloDetailComponent } from './panel/directorios/nuevos-ca
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     DemoMaterialModule,

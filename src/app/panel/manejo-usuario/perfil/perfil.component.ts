@@ -26,11 +26,12 @@ export class PerfilComponent implements OnInit {
   editUser(){
     console.log(this.user);
     const user = {
+      fullname: this.user.fullname,
       email: this.user.email,
       phone: this.user.phone,
     };
 
-    this.service.updateUser(user, this.user.id);
+    this.service.updateUser(user, this.user.id)
   }
 
 }
