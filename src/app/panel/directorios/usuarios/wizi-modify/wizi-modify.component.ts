@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-wizi-modify',
@@ -59,6 +61,8 @@ export class WiziModifyComponent implements OnInit {
     console.log(this.object);
     this.userService.PatchUser(this.user, this.object).subscribe( (data: any) => {
       console.log(data);
+      Swal.fire('Bien!', 'Perfil modificado con éxito', 'success');
+
     });
   }
 

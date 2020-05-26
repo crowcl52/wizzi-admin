@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-modify',
@@ -65,7 +66,8 @@ export class AdminModifyComponent implements OnInit {
     }
     console.log(body);
     this.userService.PatchUser(this.user, body).subscribe( (data: any) => {
-      console.log(data);
+      Swal.fire('Bien!', 'Perfil modificado con éxito', 'success');
+
     })
   }
   ngOnInit() {
