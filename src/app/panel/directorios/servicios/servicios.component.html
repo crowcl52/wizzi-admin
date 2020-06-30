@@ -7,7 +7,7 @@
             <h2>Servicios </h2>
             <div class="user-buttons">
                 <a><i class="fas fa-bell" [routerLink]="['/admin/notify']"></i></a>
-                <div class="number-pink">3</div>
+                <div class="number-pink"> {{GetPend}} </div>
                 <div class="input">
                     <i class="fas fa-search"></i>
                     <input type="text" name="search" (click)="search = !search" />

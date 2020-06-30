@@ -45,7 +45,7 @@ export class NotifyComponent implements OnInit {
   accept(id) {
     this.userService.PatchWizi(id, {approve: 'true'}).subscribe( data => {
       console.log(data);
-      Swal.fire('Bien!', 'Usuario Rechazado', 'success');
+      Swal.fire('Bien!', 'Usuario Aceptado', 'success');
       this.userService.GetWizis().subscribe( (data: any) => {
         console.log(data);
         this.Getwizi = data.data.items;

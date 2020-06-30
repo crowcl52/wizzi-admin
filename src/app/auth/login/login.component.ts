@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   user = 'loliva2345@mail.com';
   password = '1234';
+  hide = true;
 
   constructor( private service: AuthService ,  private store: Store<AppState>, private router: Router ) { }
 

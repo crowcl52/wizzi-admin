@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
+import { UserService } from '../usuarios/user.service';
 
 @Component({
   selector: 'app-servicios',
@@ -10,10 +11,11 @@ export class ServiciosComponent implements OnInit {
 
   nav = 'admin';
   search = false;
+  GetPend = 0
 
   services = [];
 
-  constructor( private service: UsuariosService ) { }
+  constructor( private service: UsuariosService, private userService: UserService ) { }
 
   ngOnInit() {
 
@@ -21,6 +23,12 @@ export class ServiciosComponent implements OnInit {
       console.log(d.data.items)
       this.services = d.data.items;
     } )
+  }
+
+  GetWizisPendient() {
+    this.userService.GetWizisPendient().subscribe( (data: any) => {
+      this.GetPend = data.data.items.length;
+    });
   }
 
 }

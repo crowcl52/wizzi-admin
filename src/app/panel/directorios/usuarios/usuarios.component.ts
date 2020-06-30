@@ -76,18 +76,21 @@ export class UsuariosComponent implements OnInit {
       this.auxWiz = this.GetWizis;
     });
   }
+
   GetWiziFunction(id) {
     this.userService.GetWizi(id).subscribe( (data: any) => {
       console.log(data);
       this.GetWizi = data.data.items;
     });
   }
+
   GetClientServicesFunction(id) {
     this.userService.GetClientServices(id).subscribe( (data: any) => {
       console.log(data);
       this.GetClientServices = data.data.items;
     });
   }
+  
   GetWiziServicesFunction(id) {
     this.userService.GetWiziServices(this.GetWizis.id).subscribe( (data: any) => {
       console.log(data);
