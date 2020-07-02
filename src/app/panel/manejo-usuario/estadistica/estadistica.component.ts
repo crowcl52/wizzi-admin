@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Label } from 'ng2-charts';
 import { UsuariosService } from '../../services/usuarios.service';
 import { FormControl } from '@angular/forms';
+
+import * as xlsx from 'xlsx';
 
 @Component({
   selector: 'app-estadistica',
@@ -12,11 +14,23 @@ import { FormControl } from '@angular/forms';
 })
 export class EstadisticaComponent implements OnInit {
 
+  @ViewChild('clientTbl', { static: false }) clientTbl: ElementRef;
+  @ViewChild('serviceTbl', { static: false }) serviceTbl: ElementRef;
+  @ViewChild('carrsTbl', { static: false }) carrsTbl: ElementRef;
+  @ViewChild('provTbl', { static: false }) provTbl: ElementRef;
+
+
   dateInit = 0;
   dateEnd = 0;
   blockSend = true;
+  dataclientChar = { datasets: [{ data: [""] }], labels: ["",] };
+  dataserviceChar = { datasets: [{ data: [""] }], labels: ["",] };
+  datacarsChar = { datasets: [{ data: [""] }], labels: ["",] };
+  dataprovidersChar = { datasets: [{ data: [""] }], labels: ["",] };
 
-  initDay =  new FormControl(new Date("01/01/2020"));
+  excel = [];
+
+  initDay = new FormControl(new Date("01/01/2020"));
   today = new FormControl(new Date());
 
   public barChartOptions: ChartOptions = {
@@ -27,9 +41,9 @@ export class EstadisticaComponent implements OnInit {
       datalabels: {
         anchor: 'end',
         align: 'end',
-      }
-    }
-  };
+      },
+    },
+  }
 
   public barChartLabelsClient: Label[] = [];
   public barChartLabelsServices: Label[] = [];
@@ -84,10 +98,10 @@ export class EstadisticaComponent implements OnInit {
 
     this.userService.getClientChar(this.dateInit, this.dateEnd).subscribe((d: any) => {
       console.log(d.data.items[0].data)
-
+      this.dataclientChar = d.data.items[0].data;
       let data = d.data.items[0].data;
       this.barChartLabelsClient = data.labels;
-      this.barChartDataClient = [ { data: data.datasets[0].data , label: data.datasets[0].label }];
+      this.barChartDataClient = [{ data: data.datasets[0].data, label: data.datasets[0].label }];
 
     }, err => {
       console.log(err)
@@ -95,20 +109,20 @@ export class EstadisticaComponent implements OnInit {
 
     this.userService.getServicesChar(this.dateInit, this.dateEnd).subscribe((d: any) => {
       console.log(d.data.items)
-
+      this.dataserviceChar = d.data.items[0].data;
       let data = d.data.items[0].data;
       this.barChartLabelsServices = data.labels;
-      this.barChartDataServices = [ { data: data.datasets[0].data , label: data.datasets[0].label }];
+      this.barChartDataServices = [{ data: data.datasets[0].data, label: data.datasets[0].label }];
     }, err => {
       console.log(err)
     })
 
     this.userService.getCarsChar(this.dateInit, this.dateEnd).subscribe((d: any) => {
       console.log(d.data.items)
-
+      this.datacarsChar = d.data.items[0].data;
       let data = d.data.items[0].data;
       this.barChartLabelsCars = data.labels;
-      this.barChartDataCars = [ { data: data.datasets[0].data , label: data.datasets[0].label }];
+      this.barChartDataCars = [{ data: data.datasets[0].data, label: data.datasets[0].label }];
 
     }, err => {
       console.log(err)
@@ -116,15 +130,40 @@ export class EstadisticaComponent implements OnInit {
 
     this.userService.getprovidersChar(this.dateInit, this.dateEnd).subscribe((d: any) => {
       console.log(d.data.items)
-
+      this.dataprovidersChar = d.data.items[0].data;
       let data = d.data.items[0].data;
       this.barChartLabelsProviders = data.labels;
-      this.barChartDataProviders = [ { data: data.datasets[0].data , label: data.datasets[0].label }];
+      this.barChartDataProviders = [{ data: data.datasets[0].data, label: data.datasets[0].label }];
 
     }, err => {
       console.log(err)
     })
 
+  }
+
+  exportExcel() {
+
+  }
+
+  exportclientExcel() {
+    const ws: xlsx.WorkSheet =
+      xlsx.utils.table_to_sheet(this.clientTbl.nativeElement);
+    const ws2: xlsx.WorkSheet =
+      xlsx.utils.table_to_sheet(this.serviceTbl.nativeElement);
+    const ws3: xlsx.WorkSheet =
+      xlsx.utils.table_to_sheet(this.carrsTbl.nativeElement);
+    const ws4: xlsx.WorkSheet =
+      xlsx.utils.table_to_sheet(this.provTbl.nativeElement);
+
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+
+    xlsx.utils.book_append_sheet(wb, ws, 'clientes');
+    xlsx.utils.book_append_sheet(wb, ws2, 'servicios');
+    xlsx.utils.book_append_sheet(wb, ws3, 'Carros');
+    xlsx.utils.book_append_sheet(wb, ws4, 'Providers');
+
+
+    xlsx.writeFile(wb, 'estadisticas.xlsx');
   }
 
 }

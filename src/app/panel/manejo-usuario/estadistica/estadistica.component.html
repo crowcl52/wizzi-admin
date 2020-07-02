@@ -3,89 +3,129 @@
 
   <div class="row">
     <div class="col-12">
-      <p class="text-secondary" > Selecciona una fecha de inicio y una de fin </p>
+      <p class="text-secondary"> Selecciona una fecha de inicio y una de fin </p>
     </div>
-    <mat-form-field class="col-5" >
-      <input disabled matInput (dateChange)="gatedate($event.value,1)" [matDatepicker]="picker" [formControl]="initDay" placeholder="Inicio" >
+    <mat-form-field class="col-5">
+      <input disabled matInput (dateChange)="gatedate($event.value,1)" [matDatepicker]="picker" [formControl]="initDay"
+        placeholder="Inicio">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker disabled="false" #picker></mat-datepicker>
     </mat-form-field>
-    <mat-form-field class="col-5" >
-      <input disabled matInput (dateChange)="gatedate($event.value,2)" [matDatepicker]="picker2" [formControl]="today" placeholder="Fin" >
+    <mat-form-field class="col-5">
+      <input disabled matInput (dateChange)="gatedate($event.value,2)" [matDatepicker]="picker2" [formControl]="today"
+        placeholder="Fin">
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker disabled="false" #picker2></mat-datepicker>
     </mat-form-field>
     <div class="col">
-      <button [disabled]="blockSend" (click)="searchDate()" class="btn btn-primary" > Buscar </button>
+      <button [disabled]="blockSend" (click)="searchDate()" class="btn btn-primary"> Buscar </button>
     </div>
   </div>
 
-  <h4 class="mt-3" > Clientes </h4>
+  <button class="btn btn-success" (click)="exportclientExcel()"> Export a Excel </button>
+
+  <h4 class="mt-3"> Clientes </h4>
   <mat-divider></mat-divider>
   <div>
     <div>
       <div style="display: block">
-        <canvas baseChart
-          [datasets]="barChartDataClient"
-          [labels]="barChartLabelsClient"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType">
+        <canvas baseChart [datasets]="barChartDataClient" [labels]="barChartLabelsClient" [options]="barChartOptions"
+          [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
         </canvas>
       </div>
     </div>
   </div>
 
-  <h4 class="mt-3" > Servicios </h4>
+  <h4 class="mt-3"> Servicios </h4>
   <mat-divider></mat-divider>
   <div>
     <div>
       <div style="display: block">
-        <canvas baseChart
-          [datasets]="barChartDataServices"
-          [labels]="barChartLabelsServices"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType">
+        <canvas baseChart [datasets]="barChartDataServices" [labels]="barChartLabelsServices"
+          [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
         </canvas>
       </div>
     </div>
   </div>
 
-  <h4 class="mt-3" >Carros</h4>
+  <h4 class="mt-3">Carros</h4>
   <mat-divider></mat-divider>
   <div>
     <div>
       <div style="display: block">
-        <canvas baseChart
-          [datasets]="barChartDataCars"
-          [labels]="barChartLabelsCars"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType">
+        <canvas baseChart [datasets]="barChartDataCars" [labels]="barChartLabelsCars" [options]="barChartOptions"
+          [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
         </canvas>
       </div>
     </div>
   </div>
 
-  <h4 class="mt-3" > Providers </h4>
+  <h4 class="mt-3"> Providers </h4>
   <mat-divider></mat-divider>
   <div>
     <div>
       <div style="display: block">
-        <canvas baseChart
-          [datasets]="barChartDataProviders"
-          [labels]="barChartLabelsProviders"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType">
+        <canvas baseChart [datasets]="barChartDataProviders" [labels]="barChartLabelsProviders"
+          [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
         </canvas>
       </div>
     </div>
   </div>
 
+</section>
+
+<!-- table section -->
+<section class="tables">
+    <!-- clientes -->
+    <table #clientTbl class="table table-bordered d-none">
+      <thead class="thead-dark">
+        <tr>
+          <th *ngFor="let item of dataclientChar.labels">{{item}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <td *ngFor="let item of dataclientChar.datasets[0].data; let i = index">{{item}}</td>
+        </tr>
+      </tbody>
+    </table>
+  <!-- Servicios -->
+    <table #serviceTbl  class="table table-bordered d-none">
+      <thead class="thead-dark">
+        <tr>
+          <th *ngFor="let item of dataserviceChar.labels">{{item}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <td *ngFor="let item of dataserviceChar.datasets[0].data; let i = index">{{item}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Carros -->
+    <table #carrsTbl  class="table table-bordered d-none">
+      <thead class="thead-dark">
+        <tr>
+          <th *ngFor="let item of datacarsChar.labels">{{item}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <td *ngFor="let item of datacarsChar.datasets[0].data; let i = index">{{item}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Providers -->
+    <table #provTbl  class="table table-bordered d-none">
+      <thead class="thead-dark">
+        <tr>
+          <th *ngFor="let item of dataprovidersChar.labels">{{item}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <td *ngFor="let item of dataprovidersChar.datasets[0].data; let i = index">{{item}}</td>
+        </tr>
+      </tbody>
+    </table>
 </section>
