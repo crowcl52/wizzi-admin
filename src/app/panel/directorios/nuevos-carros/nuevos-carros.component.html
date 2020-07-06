@@ -11,7 +11,7 @@
         <div class="number-pink"> {{alert}} </div>
         <div class="input">
           <i class="fas fa-search"></i>
-          <input type="text" name="search" />
+          <input type="text" [(ngModel)]="searchName" name="search" (keyup)="search()" />
         </div>
       </div>
     </div>
@@ -34,6 +34,14 @@
           </tr>
         </tbody>
       </table>
+      <div class="pagination mt-3">
+        <button mat-button (click)="prePage()" [disabled]="skipTable == 0" >
+            <mat-icon> first_page </mat-icon>
+        </button>
+        <button mat-button (click)="nextPage()" >
+            <mat-icon> last_page </mat-icon>
+        </button>
+    </div>
     </div>
   </div>
 </div>

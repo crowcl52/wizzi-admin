@@ -64,3 +64,11 @@ $pink : #C02278;
 .cursor{
   cursor: pointer;
 }
+
+.pagination{
+  display: flex;
+  justify-content: space-between;
+  button{
+    transform: scale(1.3);
+  }
+}

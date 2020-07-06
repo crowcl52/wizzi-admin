@@ -21,19 +21,31 @@ export class NuevosCarrosComponent implements OnInit, OnDestroy {
   carsBrandSubscription: Subscription = new Subscription();
 
   carId = 0;
-
-
   alert = 0; 
 
-  constructor( private store: Store<AppState>, private carService: CarsService, private route:Router, public dialog: MatDialog , private userService: UserService ) { 
-    this.carsBrandSubscription = store.select('cars').subscribe(cars=>{
-      console.log(cars.carBrand)
-      this.cars = cars.carBrand;
-    })
-  }
+  skipTable = 0;
+  searchName = "";
+
+
+  constructor( private store: Store<AppState>, private carService: CarsService, private route:Router, public dialog: MatDialog , private userService: UserService ) { }
 
   ngOnInit() {
     this.GetWizisPendient();
+    this.getCarsTable();
+  }
+
+  getCarsTable(){
+    let data = {
+      where: {
+        // fullname: { "contains": "car" }
+      },
+      skip: this.skipTable,
+      limit: 10
+    }
+    this.carService.getCarsBrandsTable(data).subscribe( (d:any) =>{
+      console.log(d.data.items);
+      this.cars = d.data.items;
+    })
   }
 
   ngOnDestroy(){
@@ -61,6 +73,40 @@ export class NuevosCarrosComponent implements OnInit, OnDestroy {
       height: '500px',
       data: { id: id, name:name }
     });
+  }
+
+  nextPage() {
+    this.skipTable += 10;
+    console.log(this.skipTable);
+    this.getCarsTable();
+  }
+
+  prePage() {
+    this.skipTable = this.skipTable > 0 ? this.skipTable -= 10 : this.skipTable;
+    console.log(this.skipTable);
+    this.getCarsTable();
+  }
+
+  reset(type) {
+    this.skipTable = 0;
+    this.searchName = "";
+    this.getCarsTable();
+
+  }
+
+  search() {
+    this.skipTable = 0;
+    let data = {
+      where: {
+        name: { "contains": this.searchName }
+      },
+      skip: this.skipTable,
+      limit: 10
+    }
+    this.carService.getCarsBrandsTable(data).subscribe((d: any) => {
+      console.log(d.data.items)
+      this.cars = d.data.items;
+    })
   }
 
 }

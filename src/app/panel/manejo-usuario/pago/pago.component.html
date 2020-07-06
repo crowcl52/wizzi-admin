@@ -1,34 +1,33 @@
 <div class="user-wrapper">
     <div class="user-container">
         <div class="email">
-            <label>Email</label>
+            <label>Buscar</label>
         </div>
         <div class="user-head">
-            <h2>Servicios </h2>
+            <h2> Pagos </h2>
             <div class="user-buttons">
                 <a><i class="fas fa-bell" [routerLink]="['/admin/notify']"></i></a>
-                <div class="number-pink">3</div>
+                <div class="number-pink"> {{GetPend}} </div>
                 <div class="input">
                     <i class="fas fa-search"></i>
-                    <input type="text" name="search" (click)="search = !search" />
+                    <input type="text" [(ngModel)]="searchName" name="search" (keyup)="search()" />
                 </div>
             </div>
         </div>
         <div class="user-nav">
-            <div class="nav-title" [ngClass]="{selected: nav === 'admin'}" (click)="nav = 'admin'">
+            <div class="nav-title" [ngClass]="{selected: nav === 'admin'}" (click)="reset('admin')">
                 <h3>Tiempo Real</h3>
             </div>
-            <div class="nav-title" [ngClass]="{selected: nav === 'wiz'}" (click)="nav = 'wiz'">
+            <div class="nav-title" [ngClass]="{selected: nav === 'wiz'}" (click)="reset('wiz')">
                 <h3>Historial</h3>
             </div>
-
         </div>
         <div class="user-tables">
             <table *ngIf="nav === 'admin'">
                 <thead>
                     <tr>
                         <th>Fecha/Hora</th>
-                        <th>Código de Unidad</th>
+                        <th class="text-center">Usuario</th>
                         <th>Tipo</th>
                         <th>Total Servicio</th>
                         <th>Estatus</th>
@@ -37,11 +36,11 @@
                 <tbody>
                     <tr *ngFor="let user of services; let i = index">
                         <td class="py-3">{{ user.created_at | date: 'short' }}</td>
-                        <td>{{ user.car_size.id }}</td>
-                        <td>{{ user.car_size.name }}</td>
-                        <td>{{ user.cost }}</td>
+                        <td class="text-center">{{ user.client.fullname }}</td>
+                        <td>{{ user.service_type_name }}</td>
+                        <td>{{ user.total_cost }}</td>
                         <td>
-                            <button class="active">status</button>
+                            <button class="active">{{user.status}}</button>
                         </td>
                     </tr>
                 </tbody>
@@ -50,7 +49,7 @@
                 <thead>
                     <tr>
                         <th>Fecha/Hora</th>
-                        <th>Código de Unidad</th>
+                        <th class="text-center">usuario</th>
                         <th>Tipo</th>
                         <th>Total Servicio</th>
                         <th>Estatus</th>
@@ -59,15 +58,23 @@
                 <tbody>
                     <tr *ngFor="let user of services; let i = index">
                         <td class="py-3">{{ user.created_at | date: 'short' }}</td>
-                        <td>{{ user.car_size.id }}</td>
-                        <td>{{ user.car_size.name }}</td>
-                        <td>{{ user.cost }}</td>
+                        <td class="text-center">{{ user.client.fullname }}</td>
+                        <td>{{ user.service_type_name }}</td>
+                        <td>{{ user.total_cost }}</td>
                         <td>
-                            <button class="active">status</button>
+                            <button class="active">{{user.status}}</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="pagination mt-3">
+                <button mat-button (click)="prePage()" [disabled]="skipTable == 0">
+                    <mat-icon> first_page </mat-icon>
+                </button>
+                <button mat-button (click)="nextPage()">
+                    <mat-icon> last_page </mat-icon>
+                </button>
+            </div>
         </div>
     </div>
 </div>

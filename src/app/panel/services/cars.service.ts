@@ -28,6 +28,13 @@ export class CarsService {
     });
   }
 
+  public getCarsBrandsTable(data) {
+    const Header = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+    return this.http.post(`https://api.wizi.mx/web/carbrands/`, data, { headers: Header });
+  }
+
   public getCarModel(id) {
     const url = `${this.url}/carmodels/bybrand/${id}`;
     const headers = new HttpHeaders({
@@ -37,6 +44,13 @@ export class CarsService {
       console.log(cars)
       this.store.dispatch(new SetCarsModel([...cars.data.items]));
     });
+  }
+
+  public getCarsModelTable(data) {
+    const Header = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
+    });
+    return this.http.post(`https://api.wizi.mx/web/carmodels/`, data, { headers: Header });
   }
 
   public getCarSizes() {

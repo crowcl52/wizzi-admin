@@ -7,26 +7,27 @@
             <h2>Usuarios</h2>
             <div class="user-buttons">
                 <a (click)="navigate()" *ngIf="nav == 'admin'"><i class="fas fa-plus"></i></a>
-                <a><i class="fas fa-bell"  [routerLink]="['/admin/notify']"></i></a>
+                <a><i class="fas fa-bell" [routerLink]="['/admin/notify']"></i></a>
                 <div class="number-pink">{{ GetPend }}</div>
                 <div class="input">
                     <i class="fas fa-search"></i>
-                    <input type="text" name="search" (keyup)="search($event.srcElement.value)" />
+                    <input type="text" [(ngModel)]="searchName" name="search" (keyup)="search()" />
                 </div>
             </div>
         </div>
         <div class="user-nav">
-            <div class="nav-title" [ngClass]="{selected: nav === 'admin'}" (click)="nav = 'admin'">
+            <div class="nav-title" [ngClass]="{selected: nav === 'admin'}" (click)="reset('admin')">
                 <h3>Administradores</h3>
             </div>
-            <div class="nav-title" [ngClass]="{selected: nav === 'wiz'}" (click)="nav = 'wiz'">
+            <div class="nav-title" [ngClass]="{selected: nav === 'wiz'}" (click)="reset('wiz')">
                 <h3>Wizpecialistas</h3>
             </div>
-            <div class="nav-title" [ngClass]="{selected: nav === 'client'}" (click)="nav = 'client'">
+            <div class="nav-title" [ngClass]="{selected: nav === 'client'}" (click)="reset('client')">
                 <h3>Clientes</h3>
             </div>
         </div>
         <div class="user-tables">
+            <!-- Admins -->
             <table *ngIf="nav === 'admin'">
                 <thead>
                     <tr>
@@ -43,27 +44,30 @@
                     <tr *ngFor="let user of GetAdmins; let i = index">
                         <td>{{user.id}}</td>
                         <td>
-                            <img [src]="user.user.image_source || './../../../../assets/descarga.png' " />
+                            <img [src]="user.image_source ? 'https://api.wizi.mx/'+user.image_source.url : './../../../../assets/descarga.png'" />
                         </td>
                         <td>
-                            {{ user.user.fullname }}
+                            {{ user.fullname }}
                         </td>
-                        <td>{{ user.user.phone }}</td>
-                        <td>{{ user.user.email }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.email }}</td>
                         <td>
                             <button class="active" *ngIf="user.active">Habilitada</button>
                             <button class="inactive" *ngIf="!user.active">Deshabilitada</button>
                         </td>
                         <td class="point-more">
-                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
-                                <button mat-icon-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{name: user}">
-                              <i class="fas fa-ellipsis-h"></i>
-                            </button>
+                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }"
+                                [ngTemplateOutlet]="selfie" #selfie>
+                                <button mat-icon-button [matMenuTriggerFor]="appMenu"
+                                    [matMenuTriggerData]="{name: user}">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
                             </ng-template>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <!-- Wizzi -->
             <table *ngIf="nav === 'wiz'">
                 <thead>
                     <tr>
@@ -79,15 +83,15 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of GetWizis; let i = index">
-                        <td class="five">{{user.user.id}}</td>
+                        <td class="five">{{user.id}}</td>
                         <td class="five">
-                            <img src="./../../../../assets/descarga.png" />
+                            <img [src]="user.image_source ? 'https://api.wizi.mx/'+user.image_source.url : './../../../../assets/descarga.png'" />
                         </td>
                         <td class="fifteen">
-                            {{ user.user.fullname}}
+                            {{ user.fullname}}
                         </td>
-                        <td class="fifteen">{{ user.user.phone }}</td>
-                        <td class="fifteen">{{ user.user.email }}m</td>
+                        <td class="fifteen">{{ user.phone }}</td>
+                        <td class="fifteen">{{ user.email }}m</td>
                         <td class="ten">
                             <button class="active" *ngIf="user.active">Habilitada</button>
                             <button class="inactive" *ngIf="!user.active">Deshabilitada</button>
@@ -97,15 +101,18 @@
                             <button class="active" *ngIf="!user.inservice">Activo</button>
                         </td>
                         <td class="five point-more">
-                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
-                                <button mat-icon-button [matMenuTriggerFor]="appMenu1" [matMenuTriggerData]="{name: user}">
-                                <i class="fas fa-ellipsis-h"></i>
-                              </button>
+                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }"
+                                [ngTemplateOutlet]="selfie" #selfie>
+                                <button mat-icon-button [matMenuTriggerFor]="appMenu1"
+                                    [matMenuTriggerData]="{name: user}">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
                             </ng-template>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <!-- Clients -->
             <table *ngIf="nav === 'client'">
                 <thead>
                     <tr>
@@ -121,30 +128,40 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of GetClients; let i = index">
-                        <td>{{ user.user.id }}</td>
+                        <td>{{ user.id }}</td>
                         <td>
-                            <img src="./../../../../assets/descarga.png" />
+                            <img [src]="user.image_source ? 'https://api.wizi.mx/'+user.image_source.url : './../../../../assets/descarga.png'" />
                         </td>
                         <td>
-                            {{ user.user.fullname }}
+                            {{ user.fullname }}
                         </td>
-                        <td>{{ user.user.created_at | date }}</td>
-                        <td>{{ user.user.phone }}</td>
-                        <td>{{ user.user.email }}</td>
+                        <td>{{ user.created_at | date }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.email }}</td>
                         <td>
                             <button class="active" *ngIf="user.active">Habilitada</button>
                             <button class="inactive" *ngIf="!user.active">Deshabilitada</button>
                         </td>
                         <td class="point-more">
-                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }" [ngTemplateOutlet]="selfie" #selfie>
-                                <button mat-icon-button [matMenuTriggerFor]="appMenu2" [matMenuTriggerData]="{name: user}">
-                                <i class="fas fa-ellipsis-h"></i>
-                              </button>
+                            <ng-template let-a="aVariable" [ngTemplateOutletContext]="{ aVariable: false }"
+                                [ngTemplateOutlet]="selfie" #selfie>
+                                <button mat-icon-button [matMenuTriggerFor]="appMenu2"
+                                    [matMenuTriggerData]="{name: user}">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
                             </ng-template>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="pagination mt-3">
+                <button mat-button (click)="prePage()" [disabled]="skipTable == 0" >
+                    <mat-icon> first_page </mat-icon>
+                </button>
+                <button mat-button (click)="nextPage()" >
+                    <mat-icon> last_page </mat-icon>
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -152,17 +169,17 @@
 <mat-menu #appMenu="matMenu" xPosition="after">
     <ng-template matMenuContent let-name="name">
         <button mat-menu-item style="color: #c02278;" *ngIf="name.active" (click)="dishableAdmin(name.id)">
-          <i class="fas fa-key"></i>
-          Deshabilitar
-      </button>
+            <i class="fas fa-key"></i>
+            Deshabilitar
+        </button>
         <button mat-menu-item style="color: #c02278;" *ngIf="!name.active" (click)="hableAdmin(name.id)">
-          <i class="fas fa-key"></i>
-          Habilitar
-      </button>
+            <i class="fas fa-key"></i>
+            Habilitar
+        </button>
         <button mat-menu-item style="color: #c02278;" (click)="editAdmin(name.id);">
-          <i class="fas fa-edit"></i>
-          Edit
-      </button>
+            <i class="fas fa-edit"></i>
+            Edit
+        </button>
         <!--<button (click)="deleteAdmin(user.id)">
           <i class="fas fa-trash-alt"></i>
           Delete
@@ -172,17 +189,17 @@
 <mat-menu #appMenu1="matMenu" xPosition="after">
     <ng-template matMenuContent let-name="name">
         <button mat-menu-item style="color: #c02278;" *ngIf="name.active" (click)="dishableWizi(name.id)">
-          <i class="fas fa-key"></i>
-          Deshabilitar
-      </button>
+            <i class="fas fa-key"></i>
+            Deshabilitar
+        </button>
         <button mat-menu-item style="color: #c02278;" *ngIf="!name.active" (click)="hableWizi(name.id)">
-          <i class="fas fa-key"></i>
-          Habilitar
-      </button>
+            <i class="fas fa-key"></i>
+            Habilitar
+        </button>
         <button mat-menu-item style="color: #c02278;" (click)="editWizi(name.id);">
-          <i class="fas fa-edit"></i>
-          Edit
-      </button>
+            <i class="fas fa-edit"></i>
+            Edit
+        </button>
         <!--<button (click)="deleteAdmin(user.id)">
           <i class="fas fa-trash-alt"></i>
           Delete

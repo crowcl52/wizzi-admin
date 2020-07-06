@@ -28,6 +28,10 @@ export class UsuariosComponent implements OnInit {
   auxClient: any;
   GetPend: any;
 
+  // skips tables
+  skipTable = 0;
+  searchName = "";
+
   constructor(private userService: UserService, private _router: Router) {
     this.nav = 'admin';
     this.active = true;
@@ -40,128 +44,152 @@ export class UsuariosComponent implements OnInit {
   }
 
   GetClientsFunction() {
-    this.userService.GetClients().subscribe( (data: any) => {
-      console.log(data);
-      this.GetClients = data.data.items;
+    let data = {
+      where: {
+        // fullname: { "contains": "car" }
+      },
+      skip: this.skipTable,
+      limit: 5
+    }
+    this.userService.GetClientTable(data).subscribe((d: any) => {
+      console.log("Clients whit pages")
+      console.log(d.data.items)
+      this.GetClients = d.data.items;
       this.auxClient = this.GetClients;
-    });
+    })
   }
 
   GetClientFunction(id) {
-    this.userService.GetClient(id).subscribe( (data: any) => {
+    this.userService.GetClient(id).subscribe((data: any) => {
       console.log(data);
       this.GetClient = data.data.items;
     });
   }
 
   GetAdminsFunction() {
-    this.userService.GetAdmins().subscribe( (data: any) => {
-      console.log(data);
-      this.GetAdmins = data.data.items;
+    let data = {
+      where: {
+        // fullname: { "contains": "car" }
+      },
+      skip: this.skipTable,
+      limit: 5
+    }
+    this.userService.GetAdminTable(data).subscribe((d: any) => {
+      console.log("Admins whit pages")
+      console.log(d.data.items)
+      this.GetAdmins = d.data.items;
       this.auxAdmin = this.GetAdmins;
-    });
+    })
   }
 
   GetAdminFunction(id) {
-    this.userService.GetAdmin(this.GetAdmins.id).subscribe( (data: any) => {
+    this.userService.GetAdmin(this.GetAdmins.id).subscribe((data: any) => {
       console.log(data);
       this.GetAdmin = data.data.items;
     });
   }
 
   GetWizisFunction() {
-    this.userService.GetWizis().subscribe( (data: any) => {
-      console.log("Wizziespecialistas ", data);
-      this.GetWizis = data.data.items;
+    let data = {
+      where: {
+        // fullname: { "contains": "car" }
+      },
+      skip: this.skipTable,
+      limit: 5
+    }
+    this.userService.GetWizisTable(data).subscribe((d: any) => {
+      console.log("Wizzis whit pages")
+      console.log(d.data.items)
+      this.GetWizis = d.data.items;
       this.auxWiz = this.GetWizis;
-    });
+    })
   }
 
   GetWiziFunction(id) {
-    this.userService.GetWizi(id).subscribe( (data: any) => {
+    this.userService.GetWizi(id).subscribe((data: any) => {
       console.log(data);
       this.GetWizi = data.data.items;
     });
   }
 
   GetClientServicesFunction(id) {
-    this.userService.GetClientServices(id).subscribe( (data: any) => {
+    this.userService.GetClientServices(id).subscribe((data: any) => {
       console.log(data);
       this.GetClientServices = data.data.items;
     });
   }
-  
+
   GetWiziServicesFunction(id) {
-    this.userService.GetWiziServices(this.GetWizis.id).subscribe( (data: any) => {
+    this.userService.GetWiziServices(this.GetWizis.id).subscribe((data: any) => {
       console.log(data);
       this.GetWiziServices = data.data.items;
     });
   }
 
   GetWizisPendient() {
-    this.userService.GetWizisPendient().subscribe( (data: any) => {
+    this.userService.GetWizisPendient().subscribe((data: any) => {
       this.GetPend = data.data.items.length;
     });
   }
 
   GetBrandFunction(brand) {
-    this.userService.GetBrand(brand).subscribe( (data: any) => {
+    this.userService.GetBrand(brand).subscribe((data: any) => {
       console.log(data);
       this.GetBrand = data.data.items;
     });
   }
 
   GetModelFunction(model) {
-    this.userService.GetModel(model).subscribe( (data: any) => {
+    this.userService.GetModel(model).subscribe((data: any) => {
       console.log(data);
       this.GetModel = data.data.items;
     });
   }
 
   DeleteAdmin(id) {
-    this.userService.DeleteAdmin(id).subscribe( (data: any) => {
+    this.userService.DeleteAdmin(id).subscribe((data: any) => {
       console.log(data);
     });
   }
 
   DeleteWizi(id) {
-    this.userService.DeleteWizi(id).subscribe( (data: any) => {
+    this.userService.DeleteWizi(id).subscribe((data: any) => {
       console.log(data);
     });
   }
 
   DeleteClient(id) {
-    this.userService.DeleteClient(id).subscribe( (data: any) => {
+    this.userService.DeleteClient(id).subscribe((data: any) => {
       console.log(data);
     });
   }
 
   PatchClient(id, body) {
-    this.userService.PatchClient(id, body).subscribe( (data: any) => {
+    this.userService.PatchClient(id, body).subscribe((data: any) => {
       console.log(data);
     });
   }
 
   PatchWizi(id, body) {
-    this.userService.PatchWizi(id, body).subscribe( (data: any) => {
+    this.userService.PatchWizi(id, body).subscribe((data: any) => {
       console.log(data);
     });
   }
 
   PatchAdmin(id, body) {
-    this.userService.PatchAdmin(id, body).subscribe( (data: any) => {
+    this.userService.PatchAdmin(id, body).subscribe((data: any) => {
       console.log(data);
     });
   }
 
   PostAdmin(body) {
-    this.userService.PostAdmin(body).subscribe( (data: any) => {
+    this.userService.PostAdmin(body).subscribe((data: any) => {
       console.log(data);
     });
   }
 
   PostWizi(body) {
-    this.userService.PostWizi(body).subscribe( (data: any) => {
+    this.userService.PostWizi(body).subscribe((data: any) => {
       console.log(data);
     });
   }
@@ -188,58 +216,58 @@ export class UsuariosComponent implements OnInit {
   }
 
   deleteAdmin(id) {
-    this.userService.DeleteAdmin(id).subscribe( data => {
+    this.userService.DeleteAdmin(id).subscribe(data => {
       console.log(data);
     });
   }
 
   deleteWizi(id) {
-    this.userService.DeleteWizi(id).subscribe( data => {
+    this.userService.DeleteWizi(id).subscribe(data => {
       console.log(data);
     });
   }
 
   deleteClient(id) {
-    this.userService.DeleteClient(id).subscribe( data => {
+    this.userService.DeleteClient(id).subscribe(data => {
       console.log(data);
     });
   }
 
   dishableAdmin(id) {
-    this.userService.PatchAdmin(id, {active: 'false'}).subscribe((data: any) => {
+    this.userService.PatchAdmin(id, { active: 'false' }).subscribe((data: any) => {
       this.GetAdminsFunction();
     });
   }
 
   hableAdmin(id) {
-    this.userService.PatchAdmin(id, {active: 'true'}).subscribe((data: any) => {
+    this.userService.PatchAdmin(id, { active: 'true' }).subscribe((data: any) => {
       this.GetAdminsFunction();
     });
   }
 
   dishableWizi(id) {
-    this.userService.PatchWizi(id, {active: 'false'}).subscribe((data: any) => {
+    this.userService.PatchWizi(id, { active: 'false' }).subscribe((data: any) => {
       console.log(data);
       this.GetWizisFunction()
     });
   }
 
   hableWizi(id) {
-    this.userService.PatchWizi(id, {active: 'true'}).subscribe((data: any) => {
+    this.userService.PatchWizi(id, { active: 'true' }).subscribe((data: any) => {
       console.log(data);
       this.GetWizisFunction()
     });
   }
 
   dishableClient(id) {
-    this.userService.PatchClient(id, {active: 'false'}).subscribe((data: any) => {
+    this.userService.PatchClient(id, { active: 'false' }).subscribe((data: any) => {
       console.log(data);
       this.GetClientsFunction();
     });
   }
 
   hableClient(id) {
-    this.userService.PatchClient(id, {active: 'true'}).subscribe((data: any) => {
+    this.userService.PatchClient(id, { active: 'true' }).subscribe((data: any) => {
       console.log(data);
       this.GetClientsFunction();
     });
@@ -247,20 +275,80 @@ export class UsuariosComponent implements OnInit {
 
   ngOnInit() {
   }
-  
-  search(value) {
 
-    this.GetAdmins = this.auxAdmin;
-    this.GetWizis = this.auxWiz;
-    this.GetClients = this.auxClient;
-    
+  nextPage() {
+    this.skipTable += 5;
+    console.log(this.skipTable);
+
+    switch (this.nav) {
+      case 'admin':
+        this.GetAdminsFunction();
+        break;
+      case 'wiz':
+        this.GetWizisFunction();
+        break;
+      case 'client':
+        this.GetClientsFunction();
+        break;
+    }
+
+  }
+
+  prePage() {
+    this.skipTable = this.skipTable > 0 ? this.skipTable -= 5 : this.skipTable;
+    console.log(this.skipTable);
+    switch (this.nav) {
+      case 'admin':
+        this.GetAdminsFunction();
+        break;
+      case 'wiz':
+        this.GetWizisFunction();
+        break;
+      case 'client':
+        this.GetClientsFunction();
+        break;
+    }
+
+  }
+
+  reset(type) {
+    this.nav = type;
+    this.skipTable = 0;
+    this.searchName = "";
+    this.GetClientsFunction();
+    this.GetAdminsFunction();
+    this.GetWizisFunction();
+  }
+
+  search() {
+    this.skipTable = 0;
+
+    let data = {
+      where: {
+        fullname: { "contains": this.searchName }
+      },
+      skip: this.skipTable,
+      limit: 5
+    }
+
     if (this.nav === 'admin') {
-      this.GetAdmins = this.GetAdmins.filter(word => word.user.fullname.includes(value));
+
+      this.userService.GetAdminTable(data).subscribe((d: any) => {
+        console.log("get Admins")
+        console.log(d.data.items)
+        this.GetAdmins = d.data.items;
+      })
     }
     if (this.nav === 'wiz') {
-      this.GetWizis = this.GetWizis.filter(word => word.user.fullname.includes(value));
+      this.userService.GetWizisTable(data).subscribe((d: any) => {
+        console.log(d.data.items)
+        this.GetWizis = d.data.items;
+      })
     } else {
-      this.GetClients = this.GetClients.filter(word => word.user.fullname.includes(value));
+      this.userService.GetClientTable(data).subscribe((d: any) => {
+        console.log(d.data.items)
+        this.GetClients = d.data.items;
+      })
     }
   }
 }
