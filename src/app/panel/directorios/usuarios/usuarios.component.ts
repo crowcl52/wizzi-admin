@@ -249,9 +249,11 @@ export class UsuariosComponent implements OnInit {
   }
   
   search(value) {
+
     this.GetAdmins = this.auxAdmin;
     this.GetWizis = this.auxWiz;
     this.GetClients = this.auxClient;
+    
     if (this.nav === 'admin') {
       this.GetAdmins = this.GetAdmins.filter(word => word.user.fullname.includes(value));
     }

@@ -21,14 +21,13 @@
             <div class="nav-title" [ngClass]="{selected: nav === 'wiz'}" (click)="nav = 'wiz'">
                 <h3>Historial</h3>
             </div>
-
         </div>
         <div class="user-tables">
             <table *ngIf="nav === 'admin'">
                 <thead>
                     <tr>
                         <th>Fecha/Hora</th>
-                        <th>Código de Unidad</th>
+                        <th class="text-center">ID del wizpecialista</th>
                         <th>Tipo</th>
                         <th>Total Servicio</th>
                         <th>Estatus</th>
@@ -37,7 +36,7 @@
                 <tbody>
                     <tr *ngFor="let user of services; let i = index">
                         <td class="py-3">{{ user.created_at | date: 'short' }}</td>
-                        <td>{{ user.car_size.id }}</td>
+                        <td  class="text-center" >{{ user.car_size.id }}</td>
                         <td>{{ user.car_size.name }}</td>
                         <td>{{ user.cost }}</td>
                         <td>
@@ -50,7 +49,7 @@
                 <thead>
                     <tr>
                         <th>Fecha/Hora</th>
-                        <th>Código de Unidad</th>
+                        <th class="text-center">ID del wizpecialista</th>
                         <th>Tipo</th>
                         <th>Total Servicio</th>
                         <th>Estatus</th>
@@ -59,7 +58,7 @@
                 <tbody>
                     <tr *ngFor="let user of services; let i = index">
                         <td class="py-3">{{ user.created_at | date: 'short' }}</td>
-                        <td>{{ user.car_size.id }}</td>
+                        <td class="text-center" >{{ user.car_size.id }}</td>
                         <td>{{ user.car_size.name }}</td>
                         <td>{{ user.cost }}</td>
                         <td>

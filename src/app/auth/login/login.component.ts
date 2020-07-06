@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  user = 'loliva2345@mail.com';
-  password = '1234';
+  // user = 'loliva2345@mail.com';
+  // password = '1234';
+  user = '';
+  password = '';
   hide = true;
 
   constructor( private service: AuthService ,  private store: Store<AppState>, private router: Router ) { }
