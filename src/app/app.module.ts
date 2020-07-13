@@ -34,6 +34,8 @@ import { CarrosCatDetailComponent } from './panel/directorios/carros-categorizad
 import { NuevosCarrosDetailComponent } from './panel/directorios/nuevos-carros/nuevos-carros-detail/nuevos-carros-detail.component';
 import { NuevosCarrosModeloComponent } from './panel/directorios/nuevos-carros/nuevos-carros-modelo/nuevos-carros-modelo.component';
 import { NuevosCarrosModeloDetailComponent } from './panel/directorios/nuevos-carros/nuevos-carros-modelo/nuevos-carros-modelo-detail/nuevos-carros-modelo-detail.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { RecoverComponent } from './recover/recover.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { NuevosCarrosModeloDetailComponent } from './panel/directorios/nuevos-ca
     CarrosCatDetailComponent,
     NuevosCarrosDetailComponent,
     NuevosCarrosModeloComponent,
-    NuevosCarrosModeloDetailComponent
+    NuevosCarrosModeloDetailComponent,
+    ResetPasswordComponent,
+    RecoverComponent
   ],
   imports: [
     BrowserModule,

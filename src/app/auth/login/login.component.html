@@ -9,14 +9,20 @@
       <input [(ngModel)]="user" matInput>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" >
+    <mat-form-field appearance="outline">
       <mat-label>Contraseña</mat-label>
       <input matInput [(ngModel)]="password" [type]="hide ? 'password' : 'text'">
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
-    
+
+    <div class="col-12 mb-3 text-right">
+      <a [routerLink]="['/recuperar-contraseña']"> Recuperar Contraseña </a>
+    </div>
+
+
     <button (click)="login()" type="button" class="btn bg-pink btn-lg text-white">Iniciar sesión</button>
   </div>
 </section>

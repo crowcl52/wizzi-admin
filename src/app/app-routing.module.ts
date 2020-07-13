@@ -18,9 +18,13 @@ import { CarrosCatDetailComponent } from './panel/directorios/carros-categorizad
 import { NuevosCarrosComponent } from './panel/directorios/nuevos-carros/nuevos-carros.component';
 import { NuevosCarrosModeloComponent } from './panel/directorios/nuevos-carros/nuevos-carros-modelo/nuevos-carros-modelo.component';
 import { EstadisticaComponent } from './panel/manejo-usuario/estadistica/estadistica.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { RecoverComponent } from './recover/recover.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'recuperar-contraseña', component: ResetPasswordComponent },
+  { path: 'recuperar/:id', component: RecoverComponent },
   {
     path: 'admin', component: PanelComponent,
     canActivate: [AuthguardService],

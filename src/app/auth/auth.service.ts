@@ -61,4 +61,16 @@ export class AuthService {
     location.reload();
   }
 
+  rePassRequest(data) {
+    let url = `${this.url}users/reset_password_request`;
+
+    return this.http.post(url, data);
+  }
+
+  rePassword(data) {
+    let url = `${this.url}users/reset_password`;
+
+    return this.http.post(url, data);
+  }
+
 }

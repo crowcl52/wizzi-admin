@@ -1,0 +1,19 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]="['/landing']" >
+        <img src="./assets/img/login/Logo - Wizi.png" width="100"  alt="logo">
+    </a>
+</nav>
+<section class="container">
+    <h3 class="txt-main mt-3"> Recuperar Contraseña </h3>
+
+    <div class="container">
+        <div class="row">
+            <p class="col-12"> Ingrese su nueva contraseña </p>
+            <mat-form-field class="col-6">
+                <input matInput [(ngModel)]="newpass" type="password" placeholder="Nuevo password">
+            </mat-form-field>
+        </div>
+        <button class="btn btn-primary" [disabled]="!(newpass.length > 4) " (click)="newPass()"> Enviar </button>
+    </div>
+
+</section>
